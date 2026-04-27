@@ -198,3 +198,70 @@ footer {
   background: var(--primary);
   color: white;
 }
+
+/* ===== 三焦内容专区优化 ===== */
+
+#about-tea {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* 卡片更清晰一点 */
+#about-tea .card {
+  margin-bottom: 28px;
+  padding: 32px;
+  line-height: 1.8;
+}
+
+/* 标题层级 */
+#about-tea h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+  color: var(--primary-dark);
+}
+
+#about-tea h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: var(--accent);
+}
+
+/* 段落（你那种逐行内容特别适配） */
+#about-tea p {
+  margin: 0;
+  white-space: pre-line; /* 关键：保留换行 */
+  color: var(--text);
+}
+
+/* 列表优化 */
+#about-tea ul {
+  padding-left: 20px;
+  margin: 10px 0 0;
+}
+
+#about-tea li {
+  margin-bottom: 8px;
+  color: var(--muted);
+}
+
+/* section 标题优化 */
+.section-title h2 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  margin-bottom: 40px;
+}
+
+/* 小屏优化 */
+@media (max-width: 768px) {
+  #about-tea .card {
+    padding: 20px;
+  }
+
+  #about-tea h3 {
+    font-size: 20px;
+  }
+}
