@@ -265,3 +265,48 @@ footer {
     font-size: 20px;
   }
 }
+/* ===== 中文页面统一风格 ===== */
+.page-hero {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(248, 245, 239, 0));
+  border-bottom: 1px solid var(--border);
+}
+
+.page-hero h1 {
+  margin-top: 0;
+}
+
+.page-hero .btn {
+  margin-top: 4px;
+}
+
+.highlight-card {
+  background: #fbf7ed;
+  border-color: rgba(200, 169, 106, 0.45);
+}
+
+.split-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.split-card h3 {
+  grid-column: 1 / -1;
+}
+
+#practice,
+#benefits,
+#keys {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .split-card {
+    grid-template-columns: 1fr;
+  }
+
+  header nav {
+    text-align: center;
+  }
+}
