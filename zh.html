@@ -224,6 +224,13 @@
       const open = links.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open);
     });
+    // 手机端：点击任意导航链接后自动收起菜单
+    links.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
   </script>
 </body>
 </html>
