@@ -331,7 +331,11 @@ p  { color: var(--muted); }
    -------------------------------------------------------------------------- */
 .card-grid, .team-grid, .testimonial-grid { display: grid; gap: 26px; }
 .card-grid.three { grid-template-columns: repeat(3, 1fr); margin-top: 44px; }
-.team-grid { grid-template-columns: repeat(3, 1fr); margin-top: 44px; }
+.team-grid {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 900px;               /* 两张卡片时整体居中，避免占满整行 */
+  margin: 44px auto 0;
+}
 .testimonial-grid { grid-template-columns: repeat(2, 1fr); margin-top: 38px; }
 
 .info-card, .team-card, blockquote {
@@ -478,6 +482,35 @@ blockquote span {
   font-size: 16px;
   line-height: 1.8;
   margin-top: 12px;
+}
+
+/* Check-payment details in the Donate section */
+.donate-details {
+  list-style: none;
+  margin: 4px 0 18px;
+  padding: 16px 20px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--yellow);
+  border-radius: var(--radius);
+}
+.donate-details li {
+  font-size: 16px;
+  color: var(--ink);
+  padding: 3px 0;
+}
+.donate-details li span {
+  display: inline-block;
+  min-width: 170px;
+  color: var(--muted-soft);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.donate-tax {
+  font-size: 14px;
+  color: var(--muted-soft);
+  margin: 0 0 18px;
 }
 
 /* Donate QR (replaces the dashed placeholder box when an image is present) */
