@@ -1,47 +1,75 @@
+/* ==========================================================================
+   One Wellness Workshop — global design system
+   Derived from onewellness网页模版.psd
+   Palette sampled from the PSD:
+     brand yellow  #FFCA1F   (logo sun / lockup text)
+     icon yellow   #FDD150   (feature circles, subtle gradient)
+     accent blue   #3B96FC   (section underlines, checklist marks)
+     heading       #262626
+     body text     #8F8F8F
+     nav text      #8C8C8C
+     light band    #F6F6F6
+   ========================================================================== */
+
 :root {
-  --green: #5d8d72;
-  --green-dark: #315f49;
-  --green-soft: #edf5ef;
-  --cream: #fbf8ef;
-  --sand: #e9dbc0;
-  --tea: #a97943;
-  --charcoal: #26352e;
-  --muted: #6f7d75;
+  --yellow: #ffca1f;
+  --yellow-soft: #fdd150;
+  --yellow-deep: #f4b91a;
+  --blue: #3b96fc;
+  --charcoal: #262626;
+  --ink: #444444;
+  --muted: #6d6d6d;
+  --muted-soft: #8a8a8a;
+  --band: #f6f6f6;
+  --line: #ececec;
   --white: #ffffff;
-  --shadow: 0 20px 55px rgba(37, 56, 47, 0.14);
+  --radius: 2px;
+  --header-h: 64px;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  font-family: "Lato", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: var(--charcoal);
+  font-family: "Lato", "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--ink);
   background: var(--white);
-  line-height: 1.7;
+  line-height: 1.75;
+  font-size: 18px;
 }
 
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 .container {
   width: min(1120px, calc(100% - 40px));
   margin: 0 auto;
 }
 
+/* --------------------------------------------------------------------------
+   Header / navigation  (PSD: flat white bar, brand left, compact caps nav,
+   boxed language switcher — no shadows, no pills)
+   -------------------------------------------------------------------------- */
 .site-header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
 }
 
 .navbar {
-  min-height: 74px;
+  min-height: var(--header-h);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,280 +77,463 @@ img { max-width: 100%; display: block; }
 }
 
 .brand {
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
   font-weight: 800;
-  letter-spacing: 1.4px;
-  color: var(--green-dark);
-  font-size: 15px;
+  letter-spacing: 1px;
+  color: var(--charcoal);
+  font-size: 16px;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 26px;
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   font-weight: 700;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
 .nav-links a {
-  color: #506058;
+  color: #757575;
   transition: color .2s ease;
 }
-.nav-links a:hover { color: var(--green); }
+.nav-links a:hover { color: var(--charcoal); }
+
+/* Boxed language switcher, as in the PSD */
+.nav-links a.lang-switch {
+  background: #f0f0f0;
+  color: #555;
+  padding: 7px 12px;
+  border-radius: var(--radius);
+  letter-spacing: .5px;
+}
+.nav-links a.lang-switch:hover { background: #e6e6e6; color: var(--charcoal); }
+
 .nav-toggle { display: none; }
 
+/* --------------------------------------------------------------------------
+   Hero  (PSD: full-bleed ocean-sunset photo, centered logo lockup,
+   no headline / subtitle / buttons)
+   -------------------------------------------------------------------------- */
 .hero {
-  min-height: 760px;
+  margin-top: var(--header-h);
   position: relative;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  color: var(--white);
+  min-height: 520px;
+  height: min(60.5vw, 88vh);   /* PSD hero ratio ≈ height 60.5% of width */
+  background: url("assets/hero-ocean.jpg") center 38% / cover no-repeat;
   overflow: hidden;
-  background:
-    linear-gradient(140deg, rgba(49, 95, 73, .45), rgba(152, 112, 70, .25)),
-    radial-gradient(circle at 50% 22%, rgba(255, 226, 166, .9) 0 4%, rgba(255, 226, 166, .35) 6%, transparent 18%),
-    linear-gradient(180deg, #7bb6be 0%, #f5d7a5 42%, #7aa07d 100%);
 }
 
-.hero::before {
-  content: "";
+.hero-lockup {
   position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to top, rgba(18, 52, 40, .72), transparent 54%),
-    radial-gradient(ellipse at bottom, rgba(255,255,255,.28) 0 18%, transparent 20%),
-    linear-gradient(105deg, transparent 0 35%, rgba(255,255,255,.14) 36% 38%, transparent 39% 100%);
-  opacity: .9;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -48%);  /* -48%: optical centering per PSD */
+  width: 34%;                        /* PSD: lockup ≈ 35% of layout width */
+  max-width: 380px;
+  min-width: 220px;
+  height: auto;
 }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 38, 30, .16);
-}
-
-.hero-content {
-  position: relative;
-  padding-top: 90px;
-  max-width: 850px;
-}
-
-.logo-mark {
-  width: 124px;
-  height: 124px;
-  margin: 0 auto 30px;
-  border: 2px solid rgba(255,255,255,.86);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-family: "Raleway", sans-serif;
-  font-weight: 800;
-  font-size: 28px;
-  letter-spacing: 3px;
-  background: rgba(255,255,255,.08);
-}
-
-.eyebrow, .section-kicker {
-  margin: 0 0 12px;
-  font-family: "Raleway", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2.8px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.hero h1 {
-  margin: 0;
-  font-family: "Raleway", sans-serif;
-  font-size: clamp(44px, 7vw, 86px);
-  line-height: 1.02;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-shadow: 0 8px 28px rgba(0,0,0,.22);
-}
-
-.hero-subtitle {
-  max-width: 720px;
-  margin: 26px auto 0;
-  font-size: 20px;
-  opacity: .94;
-}
-
-.hero-actions {
-  margin-top: 38px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.btn {
-  display: inline-flex;
-  min-height: 48px;
-  align-items: center;
-  justify-content: center;
-  padding: 0 28px;
-  border-radius: 999px;
-  font-weight: 700;
-  letter-spacing: .5px;
-  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-}
-.btn:hover { transform: translateY(-2px); }
-.btn-primary {
-  background: var(--green);
-  color: var(--white);
-  box-shadow: 0 12px 28px rgba(49, 95, 73, .28);
-}
-.btn-primary:hover { background: var(--green-dark); }
-.btn-secondary {
-  color: var(--white);
-  border: 1px solid rgba(255,255,255,.78);
-  background: rgba(255,255,255,.09);
-}
-
-.section { padding: 96px 0; }
-.section-light { background: var(--green-soft); }
-.section-warm { background: var(--cream); }
+/* --------------------------------------------------------------------------
+   Sections & headings  (PSD: uppercase heading + short blue rule)
+   -------------------------------------------------------------------------- */
+.section { padding: 92px 0; }
+.section-light, .section-warm { background: var(--band); }
 .center-text { text-align: center; }
 .narrow { max-width: 760px; }
 
-h2, h3 {
-  font-family: "Raleway", sans-serif;
-  line-height: 1.2;
+h1, h2, h3 {
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--charcoal);
+  line-height: 1.25;
   margin-top: 0;
 }
-h2 { font-size: clamp(32px, 4.5vw, 48px); margin-bottom: 22px; }
-h3 { font-size: 20px; margin-bottom: 12px; }
-p { color: var(--muted); }
-.section-kicker { color: var(--green); }
+h2 { font-size: 33px; letter-spacing: 1px; margin-bottom: 18px; }
+h3 { font-size: 20px; margin-bottom: 10px; }
+p  { color: var(--muted); }
 
-.features { padding: 72px 0; }
-.feature-grid, .card-grid, .team-grid, .testimonial-grid {
+.section-title {
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+
+/* Short blue underline under section titles */
+.title-rule {
+  display: block;
+  width: 42px;
+  height: 3px;
+  background: var(--blue);
+  margin: 0 auto 26px;
+  border: 0;
+}
+.title-rule.left { margin-left: 0; margin-right: auto; }
+
+.section-lede {
+  max-width: 640px;
+  margin: 0 auto 8px;
+  color: var(--muted);
+}
+
+/* Kicker kept for not-yet-restyled sections */
+.section-kicker {
+  margin: 0 0 10px;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2.4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+/* --------------------------------------------------------------------------
+   Buttons  (flat, rectangular — no pills)
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 13px;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn-primary {
+  background: var(--yellow);
+  color: var(--charcoal);
+}
+.btn-primary:hover { background: var(--yellow-deep); }
+.btn-secondary {
+  color: var(--charcoal);
+  border: 1px solid #d5d5d5;
+  background: transparent;
+}
+.btn-secondary:hover { border-color: var(--charcoal); }
+
+.text-link {
+  color: var(--blue);
+  font-weight: 700;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   Features  (PSD: gray band, 4 columns, yellow gradient circles, no cards)
+   -------------------------------------------------------------------------- */
+.features { padding: 84px 0; }
+.features .section-head { text-align: center; }
+
+.feature-grid {
   display: grid;
-  gap: 26px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 34px;
+  margin-top: 18px;
 }
-.feature-grid { grid-template-columns: repeat(4, 1fr); }
-.card-grid.three { grid-template-columns: repeat(3, 1fr); margin-top: 44px; }
-.team-grid { grid-template-columns: repeat(3, 1fr); margin-top: 44px; }
-.testimonial-grid { grid-template-columns: repeat(2, 1fr); margin-top: 38px; }
 
-.feature-card, .info-card, .team-card, blockquote {
-  background: var(--white);
-  border-radius: 24px;
-  padding: 34px 28px;
-  box-shadow: var(--shadow);
+.feature-card {
+  background: transparent;
+  text-align: center;
+  padding: 0;
 }
-.feature-card { text-align: center; }
+.feature-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 22px 0 8px;
+}
+.feature-card p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted-soft);
+  margin: 0;
+}
+
 .feature-icon {
-  width: 78px;
-  height: 78px;
-  margin: 0 auto 22px;
+  width: 92px;
+  height: 92px;
+  margin: 0 auto;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  color: var(--green-dark);
-  background: linear-gradient(135deg, #dcebdd, #fff4dc);
-  font-size: 30px;
+  background: linear-gradient(135deg, #ffda6b 0%, var(--yellow-soft) 45%, #f9c22e 100%);
+  color: rgba(255, 255, 255, .96);
+  font-size: 36px;
   font-weight: 700;
-  box-shadow: inset 0 0 0 1px rgba(49, 95, 73, .12);
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
+/* --------------------------------------------------------------------------
+   About / split sections  (PSD: photo left, left-aligned title + blue rule,
+   "Why Choose Us?" checklist with blue marks)
+   -------------------------------------------------------------------------- */
 .split-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 64px;
   align-items: center;
 }
 .reverse .split-text { order: 1; }
 .reverse .donate-box { order: 2; }
 
-.split-image {
-  min-height: 460px;
-  border-radius: 34px;
-  box-shadow: var(--shadow);
-  background:
-    radial-gradient(circle at 30% 25%, rgba(255,255,255,.8), transparent 18%),
-    linear-gradient(145deg, rgba(93, 141, 114, .88), rgba(233, 219, 192, .82)),
-    url("assets/placeholder.jpg");
+.split-image img {
+  width: 100%;
+  height: auto;
+  max-height: 460px;
+  object-fit: cover;
+  border-radius: var(--radius);
 }
 
-.split-text p { font-size: 17px; }
-.text-link {
-  color: var(--green-dark);
-  font-weight: 800;
-  display: inline-block;
-  margin-top: 10px;
+.split-text p { font-size: 18px; }
+
+.subheading {
+  font-size: 21px;
+  margin: 26px 0 6px;
 }
 
-.info-card {
-  border-top: 4px solid var(--green);
+/* Blue checklist */
+.checklist {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 32px;
 }
+.checklist li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 17px;
+  color: var(--muted);
+}
+.checklist li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--blue);
+  font-weight: 900;
+}
+
+/* --------------------------------------------------------------------------
+   Not-yet-restyled sections (Tea, Team, Testimonies, Events, Donate,
+   Contact) — mapped onto the flat system so nothing looks broken.
+   These get their full PSD treatment in the next stage.
+   -------------------------------------------------------------------------- */
+.card-grid, .team-grid, .testimonial-grid { display: grid; gap: 26px; }
+.card-grid.three { grid-template-columns: repeat(3, 1fr); margin-top: 44px; }
+.team-grid {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 900px;               /* 两张卡片时整体居中，避免占满整行 */
+  margin: 44px auto 0;
+}
+.testimonial-grid { grid-template-columns: repeat(2, 1fr); margin-top: 38px; }
+
+.info-card, .team-card, blockquote {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px 26px;
+}
+.info-card { border-top: 3px solid var(--yellow); }
 
 .team-card { text-align: center; }
 .avatar {
-  width: 132px;
-  height: 132px;
+  width: 128px;
+  height: 128px;
   border-radius: 50%;
-  margin: 0 auto 22px;
+  margin: 0 auto 20px;
   display: grid;
   place-items: center;
-  font-size: 46px;
+  font-size: 42px;
   font-weight: 800;
-  color: var(--green-dark);
+  color: var(--white);
 }
 .placeholder-avatar {
-  background: linear-gradient(135deg, #dcebdd, #fff1d7);
-  box-shadow: inset 0 0 0 2px rgba(49, 95, 73, .12);
+  background: linear-gradient(135deg, #ffda6b, #f9c22e);
 }
 
 blockquote {
   margin: 0;
-  font-size: 20px;
-  color: var(--charcoal);
-  font-family: "Raleway", sans-serif;
+  font-size: 19px;
+  color: var(--ink);
 }
 blockquote span {
   display: block;
-  margin-top: 20px;
-  color: var(--green);
-  font-family: "Lato", sans-serif;
-  font-size: 15px;
+  margin-top: 16px;
+  color: var(--muted-soft);
+  font-size: 14px;
   font-weight: 700;
 }
 
 .event-section {
-  background: linear-gradient(135deg, rgba(49, 95, 73, .96), rgba(107, 131, 82, .92));
+  background: var(--charcoal);
   color: var(--white);
 }
-.event-section p, .event-section .section-kicker { color: rgba(255,255,255,.84); }
+.event-section h2 { color: var(--white); }
+.event-section p { color: rgba(255,255,255,.82); }
+.event-section .section-kicker { color: var(--yellow); }
 .event-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 32px;
 }
-.event-card h2 { margin-bottom: 10px; }
+.event-card h2 { margin-bottom: 8px; }
 
 .donate-box {
-  min-height: 320px;
-  border-radius: 30px;
-  border: 2px dashed rgba(49, 95, 73, .35);
-  background: rgba(255,255,255,.58);
+  min-height: 300px;
+  border-radius: var(--radius);
+  border: 1px dashed #cfcfcf;
+  background: var(--white);
   display: grid;
   place-items: center;
-  color: var(--green-dark);
-  font-weight: 800;
-  font-family: "Raleway", sans-serif;
+  color: var(--muted);
+  font-weight: 700;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
 .contact-section { background: var(--white); }
+
+/* --------------------------------------------------------------------------
+   Content helpers for the Sanjiao Tea section & Testimonies
+   (layout only — same colors, type, and radius as the rest of the system)
+   -------------------------------------------------------------------------- */
+.card-grid.two { grid-template-columns: repeat(2, 1fr); margin-top: 44px; }
+
+.checklist.single { grid-template-columns: 1fr; }
+.checklist.no-list li::before { content: "✕"; color: var(--muted-soft); }
+
+.tea-block { margin-top: 48px; }
+.tea-block .subheading { margin-top: 0; }
+
+.tea-credentials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  justify-content: center;
+  gap: 6px 44px;
+  text-align: left;
+  margin-top: 14px;
+}
+
+.tea-vow {
+  margin: 28px auto 0;
+  max-width: 620px;
+}
+
+.tea-video {
+  margin: 24px auto 0;
+  width: min(300px, 100%);
+  aspect-ratio: 9 / 16;   /* YouTube Shorts 为竖屏比例 */
+}
+.tea-video iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: var(--radius);
+  display: block;
+}
+
+.testimonial-photo {
+  margin: 38px auto 0;
+  max-width: 560px;
+  padding: 0;
+}
+.testimonial-photo img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+/* Team photos (rectangular) & bios */
+.team-photo {
+  width: min(240px, 100%);
+  height: 300px;
+  margin: 0 auto 22px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;   /* photo file is pre-cropped with the face centered */
+}
+.team-photo.placeholder-photo {
+  display: grid;
+  place-items: center;
+  font-size: 64px;
+  font-weight: 800;
+  color: var(--white);
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(135deg, #ffda6b, #f9c22e);
+}
+.team-card .bio {
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-top: 12px;
+}
+
+/* Check-payment details in the Donate section */
+.donate-details {
+  list-style: none;
+  margin: 4px 0 18px;
+  padding: 16px 20px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--yellow);
+  border-radius: var(--radius);
+}
+.donate-details li {
+  font-size: 16px;
+  color: var(--ink);
+  padding: 3px 0;
+}
+.donate-details li span {
+  display: inline-block;
+  min-width: 170px;
+  color: var(--muted-soft);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.donate-tax {
+  font-size: 14px;
+  color: var(--muted-soft);
+  margin: 0 0 18px;
+}
+
+/* Donate QR (replaces the dashed placeholder box when an image is present) */
+.donate-box.has-image {
+  border: 0;
+  background: transparent;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+.donate-box.has-image img {
+  width: min(320px, 100%);
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
 .site-footer {
-  background: #20332a;
-  color: rgba(255,255,255,.82);
-  padding: 30px 0;
+  background: #222222;
+  color: rgba(255,255,255,.75);
+  padding: 26px 0;
+  font-size: 14px;
 }
 .footer-grid {
   display: flex;
@@ -330,47 +541,56 @@ blockquote span {
   gap: 20px;
   flex-wrap: wrap;
 }
-.site-footer p { margin: 0; color: rgba(255,255,255,.74); }
+.site-footer p { margin: 0; color: rgba(255,255,255,.72); }
 .site-footer a { color: var(--white); }
 
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .nav-toggle {
     display: block;
     border: 0;
     background: transparent;
-    color: var(--green-dark);
-    font-size: 28px;
+    color: var(--charcoal);
+    font-size: 26px;
     cursor: pointer;
   }
   .nav-links {
     position: absolute;
-    top: 74px;
-    left: 0;
-    right: 0;
+    top: var(--header-h);
+    left: 0; right: 0;
     display: none;
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
     background: var(--white);
-    padding: 12px 20px 22px;
-    box-shadow: 0 18px 30px rgba(0,0,0,.08);
+    padding: 10px 20px 18px;
+    border-bottom: 1px solid var(--line);
   }
   .nav-links.open { display: flex; }
   .nav-links a { padding: 10px 0; }
-  .hero { min-height: 680px; }
-  .feature-grid, .card-grid.three, .team-grid, .testimonial-grid, .split-grid {
+  .nav-links a.lang-switch { margin-top: 8px; }
+
+  .hero { height: auto; min-height: 420px; aspect-ratio: 4 / 3; }
+  .hero-lockup { width: 48%; }
+
+  .feature-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 26px; }
+  .card-grid.three, .card-grid.two, .team-grid, .testimonial-grid, .split-grid {
     grid-template-columns: 1fr;
   }
-  .split-image { min-height: 300px; }
+  .tea-credentials { grid-template-columns: minmax(0, max-content); }
+  .split-grid { gap: 36px; }
+  .checklist { grid-template-columns: 1fr; }
   .event-card { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 560px) {
   .container { width: min(100% - 28px, 1120px); }
-  .brand { font-size: 13px; letter-spacing: .7px; }
-  .hero { min-height: 650px; }
-  .logo-mark { width: 100px; height: 100px; font-size: 23px; }
-  .hero-subtitle { font-size: 17px; }
-  .section { padding: 72px 0; }
-  .feature-card, .info-card, .team-card, blockquote { padding: 28px 22px; }
+  .brand { font-size: 14px; letter-spacing: .6px; }
+  .section { padding: 68px 0; }
+  .features { padding: 64px 0; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .hero-lockup { width: 60%; }
+  h2 { font-size: 27px; }
 }
