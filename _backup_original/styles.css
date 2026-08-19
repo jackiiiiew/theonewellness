@@ -386,9 +386,15 @@ blockquote span {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
+  gap: 48px;
 }
 .event-card h2 { margin-bottom: 8px; }
+.event-card p { max-width: 640px; margin-bottom: 0; }
+.event-card .btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 0 38px;
+}
 
 .donate-box {
   min-height: 300px;
@@ -529,6 +535,10 @@ blockquote span {
   background: var(--white);
 }
 
+/* 手机端二维码插槽：桌面端为空，不占空间 */
+.donate-qr-slot { margin: 0; }
+.donate-qr-slot:not(:empty) { margin: 12px 0 26px; }
+
 .site-footer {
   background: #222222;
   color: rgba(255,255,255,.75);
@@ -582,7 +592,14 @@ blockquote span {
   .tea-credentials { grid-template-columns: minmax(0, max-content); }
   .split-grid { gap: 36px; }
   .checklist { grid-template-columns: 1fr; }
-  .event-card { flex-direction: column; align-items: flex-start; }
+  .event-card { flex-direction: column; align-items: flex-start; gap: 26px; }
+
+  /* 手机端：二维码由脚本移入 .donate-qr-slot，显示在 Zelle 文字下方并居中 */
+  .donate-qr-slot .donate-box.has-image {
+    display: grid;
+    justify-content: center;
+  }
+  .donate-qr-slot .donate-box.has-image img { width: min(240px, 100%); }
 }
 
 @media (max-width: 560px) {

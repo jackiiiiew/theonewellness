@@ -29,8 +29,8 @@
 
   <main>
     <section id="home" class="hero">
-      <h1 class="visually-hidden">合一健康共修所</h1>
       <img class="hero-lockup" src="assets/logo-lockup-psd.png" alt="合一健康共修所（The One Wellness Workshop）标志" />
+      <h1 class="hero-title">合一健康共修所</h1>
     </section>
 
     <section id="about" class="section split-section">
@@ -141,8 +141,8 @@
       <div class="container event-card">
         <div>
           <p class="section-kicker">活动报名</p>
-          <h2>报名参加近期活动</h2>
-          <p>三焦养生茶道活动分为线上与线下两种形式。请填写报名表，我们会与您联系并告知活动详情。</p>
+          <h2>报名参加近期共修活动</h2>
+          <p>三焦养生茶道共修活动分为线上与线下两种形式。请填写报名表，我们会与您联系并告知活动详情。</p>
         </div>
         <a class="btn btn-primary" href="https://forms.gle/8Z8Eb8uVFvMLnaNM6" target="_blank" rel="noopener">立即报名</a>
       </div>
@@ -160,9 +160,7 @@
           </ul>
           <h3 class="subheading">捐赠方式</h3>
           <p><strong>Zelle：</strong>扫描二维码即可捐赠。</p>
-          <figure class="donate-qr-inline">
-            <img src="assets/donate-zelle.png" alt="Zelle 捐赠二维码" loading="lazy" />
-          </figure>
+          <div class="donate-qr-slot"></div>
           <p><strong>支票：</strong></p>
           <ul class="donate-details">
             <li><span>支票抬头</span>The One Wellness Workshop</li>
@@ -211,6 +209,22 @@
         toggle.setAttribute('aria-expanded', 'false');
       });
     });
+
+    // 捐赠二维码：桌面端显示在右侧栏，手机端移动到 Zelle 文字下方（同一张图，不重复）
+    const donateQr = document.querySelector('#donate .donate-box.has-image');
+    const donateQrSlot = document.querySelector('#donate .donate-qr-slot');
+    const donateGrid = document.querySelector('#donate .split-grid');
+    const mqMobile = window.matchMedia('(max-width: 900px)');
+    function placeDonateQr() {
+      if (!donateQr || !donateQrSlot || !donateGrid) return;
+      if (mqMobile.matches) {
+        donateQrSlot.appendChild(donateQr);
+      } else {
+        donateGrid.appendChild(donateQr);
+      }
+    }
+    placeDonateQr();
+    mqMobile.addEventListener('change', placeDonateQr);
   </script>
 </body>
 </html>

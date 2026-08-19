@@ -29,8 +29,8 @@
 
   <main>
     <section id="home" class="hero">
-      <h1 class="visually-hidden">The One Wellness Workshop</h1>
       <img class="hero-lockup" src="assets/logo-lockup-psd.png" alt="The One Wellness Workshop logo" />
+      <h1 class="hero-title">The One Wellness Workshop</h1>
     </section>
 
     <section id="about" class="section split-section">
@@ -160,9 +160,7 @@
           </ul>
           <h3 class="subheading">Ways to give</h3>
           <p><strong>Zelle:</strong> scan the QR code to donate.</p>
-          <figure class="donate-qr-inline">
-            <img src="assets/donate-zelle.png" alt="Zelle donation QR code" loading="lazy" />
-          </figure>
+          <div class="donate-qr-slot"></div>
           <p><strong>Pay by check:</strong></p>
           <ul class="donate-details">
             <li><span>Payable to</span>The One Wellness Workshop</li>
@@ -211,6 +209,22 @@
         toggle.setAttribute('aria-expanded', 'false');
       });
     });
+
+    // 捐赠二维码：桌面端显示在右侧栏，手机端移动到 Zelle 文字下方（同一张图，不重复）
+    const donateQr = document.querySelector('#donate .donate-box.has-image');
+    const donateQrSlot = document.querySelector('#donate .donate-qr-slot');
+    const donateGrid = document.querySelector('#donate .split-grid');
+    const mqMobile = window.matchMedia('(max-width: 900px)');
+    function placeDonateQr() {
+      if (!donateQr || !donateQrSlot || !donateGrid) return;
+      if (mqMobile.matches) {
+        donateQrSlot.appendChild(donateQr);
+      } else {
+        donateGrid.appendChild(donateQr);
+      }
+    }
+    placeDonateQr();
+    mqMobile.addEventListener('change', placeDonateQr);
   </script>
 </body>
 </html>
