@@ -116,27 +116,36 @@ img { max-width: 100%; display: block; }
 .nav-toggle { display: none; }
 
 /* --------------------------------------------------------------------------
-   Hero  (PSD: full-bleed ocean-sunset photo, centered logo lockup,
-   no headline / subtitle / buttons)
+   Hero  (solid brand-brown band, centered logo lockup,
+   organization name in white below the logo)
    -------------------------------------------------------------------------- */
+:root { --hero-brown: #a5713a; }
+
 .hero {
   margin-top: var(--header-h);
-  position: relative;
-  min-height: 520px;
-  height: min(60.5vw, 88vh);   /* PSD hero ratio ≈ height 60.5% of width */
-  background: url("assets/hero-ocean.jpg") center 38% / cover no-repeat;
-  overflow: hidden;
+  background: var(--hero-brown);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 90px 20px 100px;
 }
 
 .hero-lockup {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -48%);  /* -48%: optical centering per PSD */
-  width: 34%;                        /* PSD: lockup ≈ 35% of layout width */
-  max-width: 380px;
-  min-width: 220px;
+  width: min(170px, 50%);
   height: auto;
+}
+
+.hero-title {
+  margin: 48px 0 0;
+  color: var(--white);
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-weight: 700;
+  font-size: 68px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  line-height: 1.3;
 }
 
 /* --------------------------------------------------------------------------
@@ -582,8 +591,9 @@ blockquote span {
   .nav-links a { padding: 10px 0; }
   .nav-links a.lang-switch { margin-top: 8px; }
 
-  .hero { height: auto; min-height: 420px; aspect-ratio: 4 / 3; }
-  .hero-lockup { width: 48%; }
+  .hero { padding: 70px 20px 80px; }
+  .hero-lockup { width: min(140px, 45%); }
+  .hero-title { font-size: 46px; letter-spacing: 5px; margin-top: 38px; }
 
   .feature-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 26px; }
   .card-grid.three, .card-grid.two, .team-grid, .testimonial-grid, .split-grid {
@@ -608,6 +618,8 @@ blockquote span {
   .section { padding: 68px 0; }
   .features { padding: 64px 0; }
   .feature-grid { grid-template-columns: 1fr; }
-  .hero-lockup { width: 60%; }
+  .hero { padding: 56px 16px 64px; }
+  .hero-lockup { width: min(120px, 42%); }
+  .hero-title { font-size: 36px; letter-spacing: 3px; margin-top: 32px; }
   h2 { font-size: 27px; }
 }
