@@ -17,9 +17,10 @@
   --yellow-deep: #f4b91a;
   --blue: #3b96fc;
   --charcoal: #262626;
-  --ink: #444444;
-  --muted: #6d6d6d;
-  --muted-soft: #8a8a8a;
+  --ink: #000000;
+  --muted: #000000;
+  --muted-soft: #333333;
+  --body-size: 18px;   /* 全站正文统一字号（与王老师简介段落一致） */
   --band: #f6f6f6;
   --line: #ececec;
   --white: #ffffff;
@@ -35,7 +36,13 @@ body {
   color: var(--ink);
   background: var(--white);
   line-height: 1.75;
-  font-size: 18px;
+  font-size: var(--body-size);
+}
+
+/* 正文统一字号／行高（标题、导航、按钮、页脚等 UI 元素不受影响） */
+p, li, blockquote, figcaption, .bio {
+  font-size: var(--body-size);
+  line-height: 1.75;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -261,9 +268,8 @@ p  { color: var(--muted); }
   margin: 22px 0 8px;
 }
 .feature-card p {
-  font-size: 13px;
   line-height: 1.8;
-  color: var(--muted-soft);
+  color: var(--ink);
   margin: 0;
 }
 
@@ -302,7 +308,7 @@ p  { color: var(--muted); }
   border-radius: var(--radius);
 }
 
-.split-text p { font-size: 18px; }
+.split-text p { font-size: var(--body-size); }
 
 .subheading {
   font-size: 21px;
@@ -321,8 +327,8 @@ p  { color: var(--muted); }
 .checklist li {
   position: relative;
   padding-left: 26px;
-  font-size: 17px;
-  color: var(--muted);
+  font-size: var(--body-size);
+  color: var(--ink);
 }
 .checklist li::before {
   content: "✓";
@@ -373,14 +379,14 @@ p  { color: var(--muted); }
 
 blockquote {
   margin: 0;
-  font-size: 19px;
+  font-size: var(--body-size);
   color: var(--ink);
 }
 blockquote span {
   display: block;
   margin-top: 16px;
-  color: var(--muted-soft);
-  font-size: 14px;
+  color: var(--ink);
+  font-size: var(--body-size);
   font-weight: 700;
 }
 
@@ -494,7 +500,7 @@ blockquote span {
 }
 .team-card .bio {
   text-align: left;
-  font-size: 16px;
+  font-size: var(--body-size);
   line-height: 1.8;
   margin-top: 12px;
 }
@@ -510,21 +516,25 @@ blockquote span {
   border-radius: var(--radius);
 }
 .donate-details li {
-  font-size: 16px;
+  font-size: var(--body-size);
   color: var(--ink);
-  padding: 3px 0;
+  padding: 5px 0;
+  display: flex;
+  flex-wrap: nowrap;      /* 内容过长时在自身列内换行，保持左侧对齐 */
+  align-items: baseline;
+  gap: 0 10px;
 }
 .donate-details li span {
-  display: inline-block;
-  min-width: 170px;
-  color: var(--muted-soft);
+  flex: 0 0 auto;
+  min-width: 140px;
+  color: var(--ink);
   font-weight: 700;
-  font-size: 14px;
+  font-size: var(--body-size);
 }
 
 .donate-tax {
-  font-size: 14px;
-  color: var(--muted-soft);
+  font-size: var(--body-size);
+  color: var(--ink);
   margin: 0 0 18px;
 }
 
@@ -622,4 +632,19 @@ blockquote span {
   .hero-lockup { width: min(120px, 42%); }
   .hero-title { font-size: 36px; letter-spacing: 3px; margin-top: 32px; }
   h2 { font-size: 27px; }
+
+  /* 手机端支票信息：标签与内容分行显示，避免长地址被挤成断裂的两行 */
+  .donate-details { padding: 14px 16px; }
+  .donate-details li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 8px 0;
+  }
+  .donate-details li + li { border-top: 1px solid var(--line); }
+  .donate-details li span {
+    min-width: 0;
+    margin-bottom: 2px;
+    line-height: 1.5;
+  }
 }

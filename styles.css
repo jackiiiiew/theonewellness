@@ -351,7 +351,11 @@ p  { color: var(--muted); }
   max-width: 900px;               /* 两张卡片时整体居中，避免占满整行 */
   margin: 44px auto 0;
 }
-.testimonial-grid { grid-template-columns: repeat(2, 1fr); margin-top: 38px; }
+.testimonial-grid {
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 38px;
+  align-items: start;   /* 长短见证并排时，短卡片不被拉伸出大片空白 */
+}
 
 .info-card, .team-card, blockquote {
   background: var(--white);
@@ -463,6 +467,72 @@ blockquote span {
   border-radius: var(--radius);
   display: block;
 }
+
+/* Full testimonial with a portrait (学员见证) */
+.testimonial-grid blockquote p {
+  margin: 0 0 14px;
+  font-size: var(--body-size);
+  color: var(--ink);
+}
+.testimonial-grid blockquote p:last-of-type { margin-bottom: 0; }
+
+.testimonial-person {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+.testimonial-person img {
+  flex: 0 0 auto;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid var(--line);
+}
+.testimonial-person span { margin-top: 0; }
+
+/* --------------------------------------------------------------------------
+   Offline events (线下活动) — one photo card per gathering
+   -------------------------------------------------------------------------- */
+.offline-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 44px;
+}
+
+.offline-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--yellow);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.offline-card figure { margin: 0; }
+.offline-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+}
+.offline-card img.focus-lower { object-position: center 70%; }
+
+.offline-body { padding: 24px 26px 28px; }
+.offline-date {
+  margin: 0 0 6px;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.offline-card h3 { margin-bottom: 8px; }
+.offline-body p:last-child { margin-bottom: 0; }
 
 .testimonial-photo {
   margin: 38px auto 0;
@@ -606,9 +676,11 @@ blockquote span {
   .hero-title { font-size: 46px; letter-spacing: 5px; margin-top: 38px; }
 
   .feature-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 26px; }
-  .card-grid.three, .card-grid.two, .team-grid, .testimonial-grid, .split-grid {
+  .card-grid.three, .card-grid.two, .team-grid, .testimonial-grid, .split-grid,
+  .offline-grid {
     grid-template-columns: 1fr;
   }
+  .offline-card img { height: 240px; }
   .tea-credentials { grid-template-columns: minmax(0, max-content); }
   .split-grid { gap: 36px; }
   .checklist { grid-template-columns: 1fr; }
