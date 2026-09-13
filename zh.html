@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body data-more-label="展开全文" data-less-label="收起" data-empty-label="该分类暂时还没有见证。">
   <header class="site-header">
     <nav class="navbar container">
       <a href="#home" class="brand">合一健康共修所</a>
@@ -33,16 +33,20 @@
       <h1 class="hero-title">合一健康共修所</h1>
     </section>
 
-    <section id="about" class="section split-section">
-      <div class="container split-grid">
-        <div class="split-image">
-          <img src="assets/about-class.jpg" alt="学员们在课程中一起进行静坐养生练习" loading="lazy" />
+    <section id="about" class="section">
+      <div class="container center-text narrow">
+        <h2 class="section-title">关于我们：合一健康共修所</h2>
+        <span class="title-rule" aria-hidden="true"></span>
+      </div>
+      <div class="container purpose-stack">
+        <div class="purpose-block">
+          <p class="purpose-label">使命</p>
+          <p class="purpose-text">推广简单高效的传统与自然的方法，帮助人们远离疾病痛苦，成就自然之美。</p>
         </div>
-        <div class="split-text">
-          <h2 class="section-title">关于我们：<br />合一健康共修所</h2>
-          <span class="title-rule left" aria-hidden="true"></span>
-          <p><strong>使命：</strong>推广简单高效的传统与自然的方法，帮助人们远离疾病痛苦，成就自然之美。</p>
-          <p><strong>愿景：</strong>点亮每一个家庭的健康守护者，让自愈力智慧走入千家万户，守护一百万个家庭的健康与幸福。</p>
+        <span class="purpose-divider" aria-hidden="true"></span>
+        <div class="purpose-block">
+          <p class="purpose-label">愿景</p>
+          <p class="purpose-text">点亮每一个家庭的健康守护者，让自愈力智慧走入千家万户，守护一百万个家庭的健康与幸福。</p>
         </div>
       </div>
     </section>
@@ -54,16 +58,16 @@
       </div>
       <div class="container team-grid">
         <article class="team-card">
-          <figure class="team-photo"><img src="assets/team-cherry.jpg" alt="徐春艳（Cherry）照片" loading="lazy" /></figure>
-          <h3>徐春艳（Cherry）</h3>
-          <p>联合创始人</p>
-          <p class="bio">拥有二十年北京 211 大学教学经验，访学于美国杜克大学。自 2014 年起长期修习静坐冥想、呼吸法，逐步系统学习拍打、刮痧、针灸等传统中医技艺，为省级非遗叶氏心法针灸传承人、道医扁鹊导引按跷术传承人。深耕身心同调、传统导引与针灸疗法，探索教育成长与东方康养的整合实践。</p>
-        </article>
-        <article class="team-card">
           <figure class="team-photo"><img src="assets/team-julia.jpg" alt="郑青（Julia）照片" loading="lazy" /></figure>
           <h3>郑 青（Julia）</h3>
           <p>联合创始人</p>
           <p class="bio">实践身心灵成长疗愈，分享简单实用有效的理念、方法、和工具，帮助需要的人找回本性具足的自己，活出光、能量、丰盛。自 2024 年 6 月有缘遇见和坚持练习三焦养生茶道，有效改善了长年困扰自己的慢性脊椎疾患，彻底改变了生命状态。发愿随缘传播三焦养生茶道，帮助苦苦寻医问药的人，把身心健康和觉知的主动权拿回到自己手里，活出鲜活绽放的生命。</p>
+        </article>
+        <article class="team-card">
+          <figure class="team-photo"><img src="assets/team-cherry.jpg" alt="徐春艳（Cherry）照片" loading="lazy" /></figure>
+          <h3>徐春艳（Cherry）</h3>
+          <p>联合创始人</p>
+          <p class="bio">拥有二十年北京 211 大学教学经验，访学于美国杜克大学。自 2014 年起长期修习静坐冥想、呼吸法，逐步系统学习拍打、刮痧、针灸等传统中医技艺，为省级非遗叶氏心法针灸传承人、道医扁鹊导引按跷术传承人。深耕身心同调、传统导引与针灸疗法，探索教育成长与东方康养的整合实践。</p>
         </article>
       </div>
     </section>
@@ -128,17 +132,73 @@
       <figure class="container testimonial-photo">
         <img src="assets/testimonies-tea.jpg" alt="学员们围坐在茶桌旁，一起参加三焦茶道共修" loading="lazy" />
       </figure>
+
+      <!-- 见证卡片统一格式（首页只展示部分，全部见证见 testimonials-zh.html）：
+           <article class="tcard" data-cats="分类key 分类key">
+             头像 + 姓名/时间 → #病名标签 → 正文段落
+           新增见证时复制整张卡片，替换头像、姓名、标签与正文即可。
+           分类 key 与筛选按钮对应：spine 颈肩腰背 / heart 心脏 / sleep 睡眠 /
+           mood 情绪心理 / digestion 肠胃 / joints 关节 / eyes 眼睛 /
+           throat 咽喉 / skin 皮肤 / bone 骨骼 -->
       <div class="container testimonial-grid">
-        <blockquote>
-          <p>“我与三焦养生茶道功法的缘分，始于 2023 年 12 月 8 日的武夷山。那时，我正处于中度抑郁的困扰中，依赖药物维持，而药物带来的副作用深深影响着我的生活与工作。很快，我意识到必须做出改变，于是决定尝试停药，转而每天清晨六点准时参加三焦养生功法的修炼。</p>
-          <p>不知不觉间，改变悄然发生。我开始能安稳入睡四小时左右，醒来后仍能保持在一种深度放松的休息状态里。渐渐地，生活与工作都重新回到了原本的轨道上。2024 年的一次聚会中，我遇到一位德国生物医学博士，他用测量生命能量的仪器为我做了检测。结果显示，我的抑郁状态似乎被一种“功法”稳稳地罩住了。他好奇地问我平时练习什么，我告诉他：是三焦养生茶道功法，并且坚持每天早晨喝三焦茶，参加六点的线上练功群。</p>
-          <p>我曾多次分享这段经历。有茶友问我，如何能在不服药的情况下走出抑郁？我的回答始终是：“坚持三焦养生功法，并且一定要配合饮用三焦茶。”至今，我已持续练习并饮用三焦茶超过两年。如今的生命状态，是一种阳光与温柔并存的模样——清晰、安稳，而又充满内在的力量。”</p>
-          <div class="testimonial-person">
-            <img src="assets/testimony-mary-yin.jpg" alt="印明珠（Mary Yin）照片" loading="lazy" />
-            <span>— 印明珠</span>
+
+        <article class="tcard" data-cats="spine heart throat joints digestion sleep skin eyes mood">
+          <header class="tcard-head">
+            <img class="tcard-avatar" src="assets/testimony-julia-zheng.jpg" alt="郑青（Julia Zheng）照片" loading="lazy" />
+            <div>
+              <h3 class="tcard-name">郑青</h3>
+              <p class="tcard-meta">2026.09.08</p>
+            </div>
+          </header>
+          <ul class="tcard-tags">
+            <li>#腰椎间盘退行</li><li>#颈椎</li><li>#胸椎</li><li>#房颤</li><li>#慢性咽炎</li><li>#膝关节</li><li>#便秘</li><li>#失眠</li><li>#皮肤粗糙</li>
+          </ul>
+          <div class="tcard-body">
+            <p>我的身体曾被严重的腰椎间盘退行困扰了整整七年。最差时，坐、站、走、开车都撑不过 15 分钟，疫情前就被困在家里，每天大部分时间只能在瑜伽垫和床上度过。七年里，我试过 17 种方法：东方的、西方的、传统的、现代的，实的玄的……要么无效，要么稍有起色就卡住。直到 2024 年 6 月 3 日与三焦养生茶道（以下简称“茶道”）结缘，才真正见到曙光。</p>
+            <p>至今练习茶道 27 个月（基本上每天两次），身心被一点点唤醒：调动气血循环和代谢，激活自愈力，加速细胞更迭，大小毛病明显好转，有的彻底消失；同时听学长分享和王老师回应，心性成长也很快。曾经萎缩的生命，重新绽放了。</p>
+            <p>练到 100 天左右，颈椎先有反应。起初晨起第一杯茶，仰头和后仰都做不到，脖子剧痛。喝到第 10 杯，颈椎松快多了，能仰头了；3 个月左右，第一口茶就能轻松仰头，完全不痛了。我隐隐预感到，茶道会按颈椎、胸椎、腰椎的顺序逐个修复。</p>
+            <p>练到 13 个月，胸椎开始修复，持续约两个月。每口吐气时胸椎右侧会有疼痛感，我理解是气冲病灶。渐渐的，打喷嚏不再腰疼漏尿，阴雨天骨头不再发炎作痛。2025 年秋冬，4 个月里去了 12 个城市，探亲访友、旅游上课，彻底告别了被困在家的状态。</p>
+            <p>练到 24 个月，腰椎修复又上了台阶。下厨做菜、朋友聚会、出门活动，连续七八个小时不用躺下。生活质量和生命状态天翻地覆。</p>
+            <p>茶道对身心的其他调理改善也很明显：</p>
+            <ul>
+              <li>房颤从 8 个月做 6 次动态心电图（吃药也常犯），到近一年半按时服药就很稳定，没再跑医院；</li>
+              <li>慢性咽炎好转了，中气足了，说话洪亮了，能说长句子了；</li>
+              <li>年轻时打排球伤的膝盖不疼了；</li>
+              <li>脚后跟冬天不裂了，粗糙的皮肤变得细腻光滑了；</li>
+              <li>便秘改善了，从白色羊屎球变成黄色成形的了；</li>
+              <li>睡眠好了，能睡整夜了；</li>
+              <li>眼睛亮了，斑淡了，面色从发黑发暗变得红润了，小臂大腿长肌肉了，结实了；</li>
+              <li>觉知力提升了，二元对立和评判少了，笑容多了，内心柔软了、松弛了、活泼了，恐惧少了，能听懂玩笑了，人设一个个打掉了，说话从三思而后说到脱口而出了，小脾气能随时发出来了，和爱人的关系改善得特别好！</li>
+            </ul>
+            <p>感恩王建平老师和他发明的三焦养生茶道——调理身体之外，每天的陪伴和回应更让我心性成长，这才是根本！</p>
+            <p>我愿把这份爱和祝福传递下去，让千千万万和我一样在病痛中挣扎、苦苦寻医问药的人少走弯路，尽早结缘，尽快受益，把身心健康和觉知的主动权拿回到自己手里，让生命重新绽放！</p>
           </div>
-        </blockquote>
-        <!-- 新增见证：复制上面一整个 <blockquote> 结构，替换文字、头像与姓名即可 -->
+          <button type="button" class="tcard-more">展开全文</button>
+        </article>
+
+        <article class="tcard" data-cats="mood sleep">
+          <header class="tcard-head">
+            <img class="tcard-avatar" src="assets/testimony-mary-yin.jpg" alt="印明珠（Mary Yin）照片" loading="lazy" />
+            <div>
+              <h3 class="tcard-name">印明珠</h3>
+              <!-- 留言日期：拿到后填 <p class="tcard-meta">2026.01.01</p> -->
+            </div>
+          </header>
+          <ul class="tcard-tags">
+            <li>#抑郁症</li><li>#失眠</li><li>#药物副作用</li>
+          </ul>
+          <div class="tcard-body">
+            <p>我与三焦养生茶道功法的缘分，始于 2023 年 12 月 8 日的武夷山。那时，我正处于中度抑郁的困扰中，依赖药物维持，而药物带来的副作用深深影响着我的生活与工作。很快，我意识到必须做出改变，于是决定尝试停药，转而每天清晨六点准时参加三焦养生功法的修炼。</p>
+            <p>不知不觉间，改变悄然发生。我开始能安稳入睡四小时左右，醒来后仍能保持在一种深度放松的休息状态里。渐渐地，生活与工作都重新回到了原本的轨道上。2024 年的一次聚会中，我遇到一位德国生物医学博士，他用测量生命能量的仪器为我做了检测。结果显示，我的抑郁状态似乎被一种“功法”稳稳地罩住了。他好奇地问我平时练习什么，我告诉他：是三焦养生茶道功法，并且坚持每天早晨喝三焦茶，参加六点的线上练功群。</p>
+            <p>我曾多次分享这段经历。有茶友问我，如何能在不服药的情况下走出抑郁？我的回答始终是：“坚持三焦养生功法，并且一定要配合饮用三焦茶。”至今，我已持续练习并饮用三焦茶超过两年。如今的生命状态，是一种阳光与温柔并存的模样——清晰、安稳，而又充满内在的力量。</p>
+          </div>
+          <button type="button" class="tcard-more">展开全文</button>
+        </article>
+
+      </div>
+
+      <div class="container section-cta">
+        <a class="btn btn-primary" href="testimonials-zh.html">阅读更多见证 →</a>
       </div>
     </section>
 
@@ -181,6 +241,23 @@
                 <p class="offline-date">2025.08.02 · 北卡罗来纳州 凯瑞</p>
                 <h3>北卡凯瑞线下分享</h3>
                 <p>随缘传播简单有效的自愈力方法，帮助大家调节亚健康。</p>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline-year"><span>2024</span></li>
+          <li class="timeline-item">
+            <article class="offline-card">
+              <figure class="offline-gallery">
+                <!-- 这张照片原在“关于我们”，现移到线下活动回顾 -->
+                <button type="button" class="gallery-item" data-caption="2024.08.10 · 北京 — 北京诺金酒店线下茶会">
+                  <img src="assets/about-class.jpg" alt="2024 年 8 月 10 日北京诺金酒店线下茶会现场，学长们一起练习" loading="lazy" />
+                </button>
+              </figure>
+              <div class="offline-body">
+                <p class="offline-date">2024.08.10 · 北京</p>
+                <h3>北京诺金酒店线下茶会</h3>
+                <p>2024 年 8 月 10 日于北京诺金酒店举办的线下茶会，学长们相聚共修、共品三焦养生茶，现场一同练习与分享。</p>
               </div>
             </article>
           </li>
@@ -351,5 +428,6 @@
       });
     })();
   </script>
+  <script src="testimonials.js"></script>
 </body>
 </html>

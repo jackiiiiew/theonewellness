@@ -138,10 +138,7 @@
             <span>— 印明珠</span>
           </div>
         </blockquote>
-        <!-- 占位见证：待有正式内容后替换以下文字即可，板块样式保持不变 -->
-        <blockquote>“见证占位文字——学员的真实分享内容即将更新，敬请期待。”<span>— 学员姓名</span></blockquote>
-        <blockquote>“见证占位文字——学员的真实分享内容即将更新，敬请期待。”<span>— 学员姓名</span></blockquote>
-        <blockquote>“见证占位文字——学员的真实分享内容即将更新，敬请期待。”<span>— 学员姓名</span></blockquote>
+        <!-- 新增见证：复制上面一整个 <blockquote> 结构，替换文字、头像与姓名即可 -->
       </div>
     </section>
 
@@ -151,23 +148,43 @@
         <h2 class="section-title">线下活动回顾</h2>
         <span class="title-rule" aria-hidden="true"></span>
       </div>
-      <div class="container offline-grid">
-        <article class="offline-card">
-          <figure><img src="assets/event-cary-2025.jpg" alt="2025 年 8 月 2 日北卡凯瑞线下活动现场" loading="lazy" /></figure>
-          <div class="offline-body">
-            <p class="offline-date">2025.08.02 · 北卡罗来纳州 凯瑞</p>
-            <h3>北卡凯瑞线下分享</h3>
-            <p>随缘传播简单有效的自愈力方法，帮助大家调节亚健康。</p>
-          </div>
-        </article>
-        <article class="offline-card">
-          <figure><img src="assets/event-beijing-2026.jpg" alt="2026 年 7 月 13 日王建平老师北京线下茶会合影" loading="lazy" /></figure>
-          <div class="offline-body">
-            <p class="offline-date">2026.07.13 · 北京</p>
-            <h3>王建平老师北京线下茶会</h3>
-            <p>王建平老师带领的北京线下茶会，学长们相聚共修、共品三焦养生茶。</p>
-          </div>
-        </article>
+      <!-- 时间轴：按年份从新到旧排列。新增活动时，在对应年份下复制一个
+           <li class="timeline-item">…</li>；同一场活动可放多张照片，
+           在 .offline-gallery 里继续追加 <button class="gallery-item"> 即可。 -->
+      <div class="container timeline">
+        <ol class="timeline-list">
+          <li class="timeline-year"><span>2026</span></li>
+          <li class="timeline-item">
+            <article class="offline-card">
+              <figure class="offline-gallery">
+                <button type="button" class="gallery-item" data-caption="2026.07.13 · 北京 — 王建平老师北京线下茶会">
+                  <img src="assets/event-beijing-2026.jpg" alt="2026 年 7 月 13 日王建平老师北京线下茶会合影" loading="lazy" />
+                </button>
+              </figure>
+              <div class="offline-body">
+                <p class="offline-date">2026.07.13 · 北京</p>
+                <h3>王建平老师北京线下茶会</h3>
+                <p>王建平老师带领的北京线下茶会，学长们相聚共修、共品三焦养生茶。</p>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline-year"><span>2025</span></li>
+          <li class="timeline-item">
+            <article class="offline-card">
+              <figure class="offline-gallery">
+                <button type="button" class="gallery-item" data-caption="2025.08.02 · 北卡罗来纳州 凯瑞 — 北卡凯瑞线下分享">
+                  <img src="assets/event-cary-2025.jpg" alt="2025 年 8 月 2 日北卡凯瑞线下活动现场" loading="lazy" />
+                </button>
+              </figure>
+              <div class="offline-body">
+                <p class="offline-date">2025.08.02 · 北卡罗来纳州 凯瑞</p>
+                <h3>北卡凯瑞线下分享</h3>
+                <p>随缘传播简单有效的自愈力方法，帮助大家调节亚健康。</p>
+              </div>
+            </article>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -259,6 +276,80 @@
     }
     placeDonateQr();
     mqMobile.addEventListener('change', placeDonateQr);
+
+    // 线下活动照片灯箱：点击照片全屏查看，同一场活动的多张照片可左右切换
+    (function () {
+      const triggers = Array.from(document.querySelectorAll('.gallery-item'));
+      if (!triggers.length) return;
+
+      const overlay = document.createElement('div');
+      overlay.className = 'lightbox';
+      overlay.hidden = true;
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.setAttribute('aria-label', '活动照片');
+      overlay.innerHTML =
+        '<button type="button" class="lightbox-close" aria-label="关闭">×</button>' +
+        '<button type="button" class="lightbox-nav prev" aria-label="上一张">‹</button>' +
+        '<figure class="lightbox-figure"><img alt="" /><figcaption></figcaption></figure>' +
+        '<button type="button" class="lightbox-nav next" aria-label="下一张">›</button>';
+      document.body.appendChild(overlay);
+
+      const imgEl = overlay.querySelector('img');
+      const capEl = overlay.querySelector('figcaption');
+      const prevBtn = overlay.querySelector('.prev');
+      const nextBtn = overlay.querySelector('.next');
+      let group = [];
+      let index = 0;
+      let lastFocus = null;
+
+      function render() {
+        const btn = group[index];
+        const source = btn.querySelector('img');
+        imgEl.src = source.currentSrc || source.src;
+        imgEl.alt = source.alt || '';
+        capEl.textContent = btn.dataset.caption || source.alt || '';
+        const multiple = group.length > 1;
+        prevBtn.hidden = !multiple;
+        nextBtn.hidden = !multiple;
+      }
+
+      function open(btn) {
+        const gallery = btn.closest('.offline-gallery') || document;
+        group = Array.from(gallery.querySelectorAll('.gallery-item'));
+        index = Math.max(0, group.indexOf(btn));
+        lastFocus = btn;
+        render();
+        overlay.hidden = false;
+        document.body.classList.add('lightbox-open');
+        overlay.querySelector('.lightbox-close').focus();
+      }
+
+      function close() {
+        overlay.hidden = true;
+        document.body.classList.remove('lightbox-open');
+        imgEl.removeAttribute('src');
+        if (lastFocus) lastFocus.focus();
+      }
+
+      function step(delta) {
+        if (group.length < 2) return;
+        index = (index + delta + group.length) % group.length;
+        render();
+      }
+
+      triggers.forEach((btn) => btn.addEventListener('click', () => open(btn)));
+      overlay.querySelector('.lightbox-close').addEventListener('click', close);
+      prevBtn.addEventListener('click', () => step(-1));
+      nextBtn.addEventListener('click', () => step(1));
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+      document.addEventListener('keydown', (e) => {
+        if (overlay.hidden) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') step(-1);
+        if (e.key === 'ArrowRight') step(1);
+      });
+    })();
   </script>
 </body>
 </html>

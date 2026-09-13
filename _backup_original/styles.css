@@ -351,10 +351,14 @@ p  { color: var(--muted); }
   max-width: 900px;               /* 两张卡片时整体居中，避免占满整行 */
   margin: 44px auto 0;
 }
+/* 见证：单列加宽卡片。卡片本身用整行宽度（920px），卡内再分两栏——
+   左栏放头像与姓名，右栏放正文，这样正文行宽仍保持在易读范围内，
+   不会因为卡片变宽而出现一行七八十字的“串行”问题。 */
 .testimonial-grid {
-  grid-template-columns: repeat(2, 1fr);
-  margin-top: 38px;
-  align-items: start;   /* 长短见证并排时，短卡片不被拉伸出大片空白 */
+  grid-template-columns: 1fr;
+  max-width: 920px;
+  margin: 38px auto 0;
+  align-items: start;
 }
 
 .info-card, .team-card, blockquote {
@@ -476,11 +480,29 @@ blockquote span {
 }
 .testimonial-grid blockquote p:last-of-type { margin-bottom: 0; }
 
+/* 带头像的见证：卡内左右两栏（头像栏 / 正文栏） */
+.testimonial-grid blockquote:has(.testimonial-person) {
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  column-gap: 34px;
+  padding: 34px 36px;
+}
+.testimonial-grid blockquote:has(.testimonial-person) > p { grid-column: 2; }
+
 .testimonial-person {
   display: flex;
   align-items: center;
   gap: 14px;
   margin-top: 20px;
+}
+.testimonial-grid blockquote:has(.testimonial-person) .testimonial-person {
+  grid-column: 1;
+  grid-row: 1;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  margin-top: 4px;
 }
 .testimonial-person img {
   flex: 0 0 auto;
@@ -491,16 +513,82 @@ blockquote span {
   object-position: center top;
   border: 1px solid var(--line);
 }
+.testimonial-grid blockquote:has(.testimonial-person) .testimonial-person img {
+  width: 104px;
+  height: 104px;
+}
 .testimonial-person span { margin-top: 0; }
 
 /* --------------------------------------------------------------------------
-   Offline events (线下活动) — one photo card per gathering
+   Offline events (线下活动) — 纵向时间轴 + 可放大的活动照片
+   时间轴为“左侧轴线”结构：轴线在左，年份节点标记年份，
+   每场活动一张卡片（左图右文）。活动增加时只需在列表里继续追加，
+   排版不会因为数量变化而失衡。
    -------------------------------------------------------------------------- */
-.offline-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  margin-top: 44px;
+.timeline {
+  max-width: 900px;
+  margin: 44px auto 0;
+}
+.timeline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 34px;
+  position: relative;
+}
+.timeline-list::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--line);
+}
+
+.timeline-year {
+  position: relative;
+  margin: 0 0 20px;
+}
+.timeline-year + .timeline-item { margin-top: 0; }
+.timeline-item + .timeline-year { margin-top: 42px; }
+.timeline-year span {
+  display: inline-block;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--charcoal);
+  background: var(--yellow);
+  padding: 4px 14px;
+  border-radius: var(--radius);
+}
+.timeline-year::before {
+  content: "";
+  position: absolute;
+  left: -34px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--yellow);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 28px;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -33px;
+  top: 28px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--blue);
 }
 
 .offline-card {
@@ -510,18 +598,45 @@ blockquote span {
   border-radius: var(--radius);
   overflow: hidden;
   display: flex;
-  flex-direction: column;
+  align-items: stretch;
 }
-.offline-card figure { margin: 0; }
-.offline-card img {
+.offline-card figure { margin: 0; padding: 0; }
+
+/* 活动图集：第一张为主图，其余自动排成缩略图（可放多张现场照片） */
+.offline-gallery {
+  flex: 0 0 46%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-content: flex-start;
+}
+.gallery-item {
+  flex: 1 1 100%;
+  height: 250px;
+  padding: 0;
+  border: 0;
+  background: none;
+  overflow: hidden;
+  cursor: zoom-in;
+  display: block;
+}
+.gallery-item + .gallery-item {
+  flex: 0 0 calc(25% - 3.75px);
+  height: 62px;
+}
+.gallery-item img {
   width: 100%;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
   object-position: center;
+  transition: transform .35s ease;
 }
-.offline-card img.focus-lower { object-position: center 70%; }
+.gallery-item:hover img,
+.gallery-item:focus-visible img { transform: scale(1.04); }
+.gallery-item:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+.gallery-item img.focus-lower { object-position: center 70%; }
 
-.offline-body { padding: 24px 26px 28px; }
+.offline-body { padding: 24px 26px 28px; flex: 1 1 auto; }
 .offline-date {
   margin: 0 0 6px;
   font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -533,6 +648,59 @@ blockquote span {
 }
 .offline-card h3 { margin-bottom: 8px; }
 .offline-body p:last-child { margin-bottom: 0; }
+
+/* 照片灯箱（点击活动照片全屏查看，可左右切换同一场活动的多张照片） */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, .9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 68px;
+}
+.lightbox[hidden] { display: none; }
+.lightbox-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 100%;
+}
+.lightbox-figure img {
+  max-width: 100%;
+  max-height: 76vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius);
+}
+.lightbox figcaption {
+  color: rgba(255, 255, 255, .82);
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 640px;
+}
+.lightbox button {
+  position: absolute;
+  background: transparent;
+  border: 0;
+  color: var(--white);
+  cursor: pointer;
+  line-height: 1;
+  padding: 8px 14px;
+  font-family: "Raleway", sans-serif;
+}
+.lightbox button:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+.lightbox-close { top: 12px; right: 16px; font-size: 36px; }
+.lightbox-nav { top: 50%; transform: translateY(-50%); font-size: 46px; }
+.lightbox-nav.prev { left: 8px; }
+.lightbox-nav.next { right: 8px; }
+.lightbox-nav[hidden] { display: none; }
+body.lightbox-open { overflow: hidden; }
 
 .testimonial-photo {
   margin: 38px auto 0;
@@ -676,11 +844,33 @@ blockquote span {
   .hero-title { font-size: 46px; letter-spacing: 5px; margin-top: 38px; }
 
   .feature-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 26px; }
-  .card-grid.three, .card-grid.two, .team-grid, .testimonial-grid, .split-grid,
-  .offline-grid {
+  .card-grid.three, .card-grid.two, .team-grid, .testimonial-grid, .split-grid {
     grid-template-columns: 1fr;
   }
-  .offline-card img { height: 240px; }
+
+  /* 见证卡：手机端取消卡内分栏，头像与姓名回到正文下方一行 */
+  .testimonial-grid blockquote:has(.testimonial-person) {
+    display: block;
+    padding: 26px 22px;
+  }
+  .testimonial-grid blockquote:has(.testimonial-person) .testimonial-person {
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    margin-top: 20px;
+  }
+  .testimonial-grid blockquote:has(.testimonial-person) .testimonial-person img {
+    width: 64px;
+    height: 64px;
+  }
+
+  /* 时间轴：手机端卡片改为上图下文 */
+  .offline-card { flex-direction: column; }
+  .offline-gallery { flex: 1 1 auto; width: 100%; }
+  .gallery-item { height: 220px; }
+  .gallery-item + .gallery-item { height: 70px; }
+  .lightbox { padding: 60px 16px; }
+  .lightbox-nav { font-size: 36px; }
   .tea-credentials { grid-template-columns: minmax(0, max-content); }
   .split-grid { gap: 36px; }
   .checklist { grid-template-columns: 1fr; }
@@ -704,6 +894,12 @@ blockquote span {
   .hero-lockup { width: min(120px, 42%); }
   .hero-title { font-size: 36px; letter-spacing: 3px; margin-top: 32px; }
   h2 { font-size: 27px; }
+
+  /* 时间轴：窄屏收窄左侧留白 */
+  .timeline-list { padding-left: 26px; }
+  .timeline-list::before { left: 5px; }
+  .timeline-year::before { left: -26px; width: 14px; height: 14px; }
+  .timeline-item::before { left: -25px; top: 22px; width: 12px; height: 12px; border-width: 3px; }
 
   /* 手机端支票信息：标签与内容分行显示，避免长地址被挤成断裂的两行 */
   .donate-details { padding: 14px 16px; }

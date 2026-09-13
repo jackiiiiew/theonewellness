@@ -42,7 +42,7 @@
           <h2 class="section-title">About Us:<br />The One Wellness Workshop</h2>
           <span class="title-rule left" aria-hidden="true"></span>
           <p><strong>Mission:</strong> To promote simple and effective traditional and natural methods that help people stay away from the pain of illness and achieve natural beauty.</p>
-          <p><strong>Vision:</strong> To empower the health guardian of every home, bringing self-healing wisdom into thousands of households to safeguard the wellness and happiness of 1,000,000 families.</p>
+          <p><strong>Vision:</strong> To empower the health guardian of every home, bringing self-healing wisdom into thousands of households to safeguard the wellness and happiness of one million families.</p>
         </div>
       </div>
     </section>
@@ -55,13 +55,13 @@
       <div class="container team-grid">
         <article class="team-card">
           <figure class="team-photo"><img src="assets/team-cherry.jpg" alt="Portrait of Chunyan Xu (Cherry)" loading="lazy" /></figure>
-          <h3>Chunyan Xu (Cherry)</h3>
+          <h3>Cherry Xu</h3>
           <p>Co-founder</p>
           <p class="bio">Cherry brings twenty years of teaching experience at a leading (211) university in Beijing and was a visiting scholar at Duke University. Since 2014 she has practiced seated meditation and breathwork, and has systematically studied traditional Chinese medicine techniques including paida, gua sha, and acupuncture. She is a provincial-level intangible cultural heritage inheritor of the Ye Family Heart-Method Acupuncture and an inheritor of the Daoist medicine Bian Que daoyin anqiao technique. Her work focuses on mind–body co-regulation, traditional daoyin, and acupuncture therapy, exploring the integration of educational growth and Eastern wellness.</p>
         </article>
         <article class="team-card">
           <figure class="team-photo"><img src="assets/team-julia.jpg" alt="Portrait of Qing Zheng (Julia)" loading="lazy" /></figure>
-          <h3>Qing Zheng (Julia)</h3>
+          <h3>Julia Zheng</h3>
           <p>Co-founder</p>
           <p class="bio">Julia practices holistic growth and healing, sharing simple, practical, and effective ideas, methods, and tools that help people rediscover their innately complete selves and live out light, energy, and abundance. Since encountering the Sanjiao tea ceremony in June 2024 and practicing it consistently, she has effectively improved a chronic spinal condition that had troubled her for many years, completely transforming her state of life. She has vowed to share the practice wherever the opportunity arises, helping those who search endlessly for medical answers take back ownership of their health and awareness, and live vivid, blossoming lives.</p>
         </article>
@@ -113,8 +113,8 @@
           <p>With sustained practice, health returns to body and mind, joy arises naturally from the inside out, and many practitioners even describe a renewed, more youthful state of being — as if time were turning back.</p>
         </article>
         <article class="info-card">
-          <h3>Keys to Quick Results</h3>
-          <p>The keys to quick results are simple: practice consistently, follow the guidance, and listen to fellow practitioners' sharing. Day-by-day persistence, together with an open heart, lets the results come naturally.</p>
+          <h3>Tips to Quick Results</h3>
+          <p>The tips to quick results are simple: practice consistently, follow the guidance, and listen to fellow practitioners' sharing and the response of Master Wang. Day-by-day persistence, together with an open heart, lets the results come naturally.</p>
         </article>
       </div>
     </section>
@@ -138,10 +138,7 @@
             <span>— Mary Yin</span>
           </div>
         </blockquote>
-        <!-- 占位见证：待有正式内容后替换以下文字即可，板块样式保持不变 -->
-        <blockquote>“Testimonial placeholder — a story from one of our community members will appear here soon.”<span>— Name</span></blockquote>
-        <blockquote>“Testimonial placeholder — a story from one of our community members will appear here soon.”<span>— Name</span></blockquote>
-        <blockquote>“Testimonial placeholder — a story from one of our community members will appear here soon.”<span>— Name</span></blockquote>
+        <!-- 新增见证：复制上面一整个 <blockquote> 结构，替换文字、头像与姓名即可 -->
       </div>
     </section>
 
@@ -151,23 +148,43 @@
         <h2 class="section-title">Past In-Person Gatherings</h2>
         <span class="title-rule" aria-hidden="true"></span>
       </div>
-      <div class="container offline-grid">
-        <article class="offline-card">
-          <figure><img src="assets/event-cary-2025.jpg" alt="In-person gathering in Cary, North Carolina on August 2, 2025" loading="lazy" /></figure>
-          <div class="offline-body">
-            <p class="offline-date">Aug 2, 2025 · Cary, North Carolina</p>
-            <h3>In-person sharing in Cary, NC</h3>
-            <p>Sharing simple and effective self-healing methods with everyone who felt drawn to join, helping participants care for sub-health conditions.</p>
-          </div>
-        </article>
-        <article class="offline-card">
-          <figure><img src="assets/event-beijing-2026.jpg" alt="Group photo from Master Jianping Wang's in-person tea gathering in Beijing on July 13, 2026" loading="lazy" /></figure>
-          <div class="offline-body">
-            <p class="offline-date">Jul 13, 2026 · Beijing</p>
-            <h3>Master Jianping Wang's tea gathering in Beijing</h3>
-            <p>An in-person tea gathering led by Master Jianping Wang, where practitioners came together to practice and share the Sanjiao wellness tea.</p>
-          </div>
-        </article>
+      <!-- 时间轴：按年份从新到旧排列。新增活动时，在对应年份下复制一个
+           <li class="timeline-item">…</li>；同一场活动可放多张照片，
+           在 .offline-gallery 里继续追加 <button class="gallery-item"> 即可。 -->
+      <div class="container timeline">
+        <ol class="timeline-list">
+          <li class="timeline-year"><span>2026</span></li>
+          <li class="timeline-item">
+            <article class="offline-card">
+              <figure class="offline-gallery">
+                <button type="button" class="gallery-item" data-caption="Jul 13, 2026 · Beijing — Master Jianping Wang's tea gathering">
+                  <img src="assets/event-beijing-2026.jpg" alt="Group photo from Master Jianping Wang's in-person tea gathering in Beijing on July 13, 2026" loading="lazy" />
+                </button>
+              </figure>
+              <div class="offline-body">
+                <p class="offline-date">Jul 13, 2026 · Beijing</p>
+                <h3>Master Jianping Wang's tea gathering in Beijing</h3>
+                <p>An in-person tea gathering led by Master Jianping Wang, where practitioners came together to practice and share the Sanjiao wellness tea.</p>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline-year"><span>2025</span></li>
+          <li class="timeline-item">
+            <article class="offline-card">
+              <figure class="offline-gallery">
+                <button type="button" class="gallery-item" data-caption="Aug 2, 2025 · Cary, North Carolina — In-person sharing">
+                  <img src="assets/event-cary-2025.jpg" alt="In-person gathering in Cary, North Carolina on August 2, 2025" loading="lazy" />
+                </button>
+              </figure>
+              <div class="offline-body">
+                <p class="offline-date">Aug 2, 2025 · Cary, North Carolina</p>
+                <h3>In-person sharing in Cary, NC</h3>
+                <p>Sharing simple and effective self-healing methods with everyone who felt drawn to join, helping participants care for sub-health conditions.</p>
+              </div>
+            </article>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -259,6 +276,80 @@
     }
     placeDonateQr();
     mqMobile.addEventListener('change', placeDonateQr);
+
+    // 线下活动照片灯箱：点击照片全屏查看，同一场活动的多张照片可左右切换
+    (function () {
+      const triggers = Array.from(document.querySelectorAll('.gallery-item'));
+      if (!triggers.length) return;
+
+      const overlay = document.createElement('div');
+      overlay.className = 'lightbox';
+      overlay.hidden = true;
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.setAttribute('aria-label', 'Event photo');
+      overlay.innerHTML =
+        '<button type="button" class="lightbox-close" aria-label="Close">×</button>' +
+        '<button type="button" class="lightbox-nav prev" aria-label="Previous photo">‹</button>' +
+        '<figure class="lightbox-figure"><img alt="" /><figcaption></figcaption></figure>' +
+        '<button type="button" class="lightbox-nav next" aria-label="Next photo">›</button>';
+      document.body.appendChild(overlay);
+
+      const imgEl = overlay.querySelector('img');
+      const capEl = overlay.querySelector('figcaption');
+      const prevBtn = overlay.querySelector('.prev');
+      const nextBtn = overlay.querySelector('.next');
+      let group = [];
+      let index = 0;
+      let lastFocus = null;
+
+      function render() {
+        const btn = group[index];
+        const source = btn.querySelector('img');
+        imgEl.src = source.currentSrc || source.src;
+        imgEl.alt = source.alt || '';
+        capEl.textContent = btn.dataset.caption || source.alt || '';
+        const multiple = group.length > 1;
+        prevBtn.hidden = !multiple;
+        nextBtn.hidden = !multiple;
+      }
+
+      function open(btn) {
+        const gallery = btn.closest('.offline-gallery') || document;
+        group = Array.from(gallery.querySelectorAll('.gallery-item'));
+        index = Math.max(0, group.indexOf(btn));
+        lastFocus = btn;
+        render();
+        overlay.hidden = false;
+        document.body.classList.add('lightbox-open');
+        overlay.querySelector('.lightbox-close').focus();
+      }
+
+      function close() {
+        overlay.hidden = true;
+        document.body.classList.remove('lightbox-open');
+        imgEl.removeAttribute('src');
+        if (lastFocus) lastFocus.focus();
+      }
+
+      function step(delta) {
+        if (group.length < 2) return;
+        index = (index + delta + group.length) % group.length;
+        render();
+      }
+
+      triggers.forEach((btn) => btn.addEventListener('click', () => open(btn)));
+      overlay.querySelector('.lightbox-close').addEventListener('click', close);
+      prevBtn.addEventListener('click', () => step(-1));
+      nextBtn.addEventListener('click', () => step(1));
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+      document.addEventListener('keydown', (e) => {
+        if (overlay.hidden) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') step(-1);
+        if (e.key === 'ArrowRight') step(1);
+      });
+    })();
   </script>
 </body>
 </html>

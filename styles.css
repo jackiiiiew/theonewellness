@@ -472,52 +472,249 @@ blockquote span {
   display: block;
 }
 
-/* Full testimonial with a portrait (学员见证) */
-.testimonial-grid blockquote p {
-  margin: 0 0 14px;
-  font-size: var(--body-size);
-  color: var(--ink);
+/* --------------------------------------------------------------------------
+   使命 / 愿景（关于我们）
+   不用卡片、不用图标：上下两段大字宣言，居中排版，中间以黄色短线分隔。
+   -------------------------------------------------------------------------- */
+.purpose-stack {
+  max-width: 940px;
+  margin: 46px auto 0;
+  text-align: center;
 }
-.testimonial-grid blockquote p:last-of-type { margin-bottom: 0; }
-
-/* 带头像的见证：卡内左右两栏（头像栏 / 正文栏） */
-.testimonial-grid blockquote:has(.testimonial-person) {
-  display: grid;
-  grid-template-columns: 168px minmax(0, 1fr);
-  column-gap: 34px;
-  padding: 34px 36px;
+.purpose-block + .purpose-divider { margin: 44px auto; }
+.purpose-divider {
+  display: block;
+  width: 56px;
+  height: 3px;
+  background: var(--yellow);
+  border: 0;
 }
-.testimonial-grid blockquote:has(.testimonial-person) > p { grid-column: 2; }
+.purpose-label {
+  margin: 0 0 16px;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--blue);
+}
+.purpose-block p.purpose-text {
+  margin: 0;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 33px;            /* 与 h2 标题同一字号 */
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: .5px;
+  color: var(--charcoal);
+}
 
-.testimonial-person {
+/* --------------------------------------------------------------------------
+   学员见证卡片（首页与见证专页共用同一套格式）
+   统一结构：头像 + 姓名/时间 → 病症标签 → 正文（超长时可展开）
+   -------------------------------------------------------------------------- */
+.testimonial-grid { grid-template-columns: 1fr; }
+
+.tcard {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--yellow);
+  border-radius: var(--radius);
+  padding: 30px 32px 26px;
+}
+.tcard[hidden] { display: none; }
+
+.tcard-head {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-top: 20px;
+  gap: 18px;
+  margin-bottom: 16px;
 }
-.testimonial-grid blockquote:has(.testimonial-person) .testimonial-person {
-  grid-column: 1;
-  grid-row: 1;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 12px;
-  margin-top: 4px;
-}
-.testimonial-person img {
+.tcard-avatar {
   flex: 0 0 auto;
-  width: 58px;
-  height: 58px;
+  width: 84px;
+  height: 84px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
   border: 1px solid var(--line);
 }
-.testimonial-grid blockquote:has(.testimonial-person) .testimonial-person img {
-  width: 104px;
-  height: 104px;
+.tcard-name {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: .5px;
 }
-.testimonial-person span { margin-top: 0; }
+.tcard-meta {
+  margin: 0;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.tcard-tags {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tcard-tags li {
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 700;
+  color: #7a5a00;
+  background: rgba(255, 202, 31, .2);
+  border: 1px solid rgba(255, 202, 31, .55);
+  border-radius: var(--radius);
+  padding: 3px 10px;
+}
+
+.tcard-body { position: relative; }
+.tcard-body p { margin: 0 0 14px; }
+.tcard-body p:last-child { margin-bottom: 0; }
+.tcard-body ul {
+  margin: 0 0 14px;
+  padding-left: 20px;
+}
+.tcard-body li { margin-bottom: 4px; }
+
+/* 折叠：默认只显示开头，点击展开全文 */
+.tcard.is-clamped .tcard-body {
+  max-height: 16em;
+  overflow: hidden;
+}
+.tcard.is-clamped .tcard-body::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 5em;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), var(--white) 88%);
+}
+.tcard-more {
+  display: none;
+  margin-top: 16px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.tcard-more.is-visible { display: inline-block; }
+.tcard-more:hover { color: var(--charcoal); }
+
+/* 见证区块底部的“阅读更多见证”按钮 */
+.section-cta {
+  text-align: center;
+  margin-top: 34px;
+}
+
+/* --------------------------------------------------------------------------
+   见证专页：页头 + 病症筛选
+   -------------------------------------------------------------------------- */
+.page-hero {
+  margin-top: var(--header-h);
+  background: var(--hero-brown);
+  padding: 64px 20px 58px;
+  text-align: center;
+}
+.page-hero h1 {
+  margin: 0 0 12px;
+  color: var(--white);
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-weight: 800;
+  font-size: 40px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.page-hero p {
+  margin: 0 auto;
+  max-width: 620px;
+  color: rgba(255, 255, 255, .88);
+}
+.page-hero .back-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .8);
+}
+.page-hero .back-link:hover { color: var(--white); }
+
+.filter-bar {
+  max-width: 920px;
+  margin: 0 auto 34px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.filter-label {
+  width: 100%;
+  text-align: center;
+  margin: 0 0 4px;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.filter-chip {
+  font-family: "Lato", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--charcoal);
+  background: var(--white);
+  border: 1px solid #d8d8d8;
+  border-radius: var(--radius);
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+.filter-chip .count {
+  font-weight: 400;
+  color: var(--muted-soft);
+  margin-left: 5px;
+}
+.filter-chip:hover { border-color: var(--charcoal); }
+.filter-chip[aria-pressed="true"] {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--charcoal);
+}
+.filter-chip[aria-pressed="true"] .count { color: rgba(0, 0, 0, .55); }
+
+.filter-empty {
+  text-align: center;
+  color: var(--muted-soft);
+  margin: 28px 0 0;
+}
+.filter-empty[hidden] { display: none; }
+
+.testimony-note {
+  max-width: 920px;
+  margin: 40px auto 0;
+  padding: 18px 22px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--blue);
+  border-radius: var(--radius);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--muted-soft);
+}
 
 /* --------------------------------------------------------------------------
    Offline events (线下活动) — 纵向时间轴 + 可放大的活动照片
@@ -848,21 +1045,15 @@ body.lightbox-open { overflow: hidden; }
     grid-template-columns: 1fr;
   }
 
-  /* 见证卡：手机端取消卡内分栏，头像与姓名回到正文下方一行 */
-  .testimonial-grid blockquote:has(.testimonial-person) {
-    display: block;
-    padding: 26px 22px;
-  }
-  .testimonial-grid blockquote:has(.testimonial-person) .testimonial-person {
-    flex-direction: row;
-    justify-content: flex-start;
-    text-align: left;
-    margin-top: 20px;
-  }
-  .testimonial-grid blockquote:has(.testimonial-person) .testimonial-person img {
-    width: 64px;
-    height: 64px;
-  }
+  /* 使命 / 愿景：手机端收紧间距 */
+  .purpose-stack { margin-top: 34px; }
+  .purpose-block + .purpose-divider { margin: 32px auto; }
+
+  /* 见证卡：手机端收窄内边距，头像略小 */
+  .tcard { padding: 24px 22px 22px; }
+  .tcard-avatar { width: 68px; height: 68px; }
+  .tcard-name { font-size: 18px; }
+  .page-hero h1 { font-size: 30px; letter-spacing: 2px; }
 
   /* 时间轴：手机端卡片改为上图下文 */
   .offline-card { flex-direction: column; }
@@ -894,6 +1085,8 @@ body.lightbox-open { overflow: hidden; }
   .hero-lockup { width: min(120px, 42%); }
   .hero-title { font-size: 36px; letter-spacing: 3px; margin-top: 32px; }
   h2 { font-size: 27px; }
+  .purpose-label { font-size: 17px; }
+  .purpose-block p.purpose-text { font-size: 27px; }   /* 与手机端 h2 一致 */
 
   /* 时间轴：窄屏收窄左侧留白 */
   .timeline-list { padding-left: 26px; }

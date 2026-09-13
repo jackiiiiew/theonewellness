@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body data-more-label="Read full story" data-less-label="Show less" data-empty-label="No testimonials in this category yet.">
   <header class="site-header">
     <nav class="navbar container">
       <a href="#home" class="brand">THE ONE WELLNESS WORKSHOP</a>
@@ -33,16 +33,20 @@
       <h1 class="hero-title">The One Wellness Workshop</h1>
     </section>
 
-    <section id="about" class="section split-section">
-      <div class="container split-grid">
-        <div class="split-image">
-          <img src="assets/about-class.jpg" alt="Participants practicing seated wellness exercises together in a workshop" loading="lazy" />
+    <section id="about" class="section">
+      <div class="container center-text narrow">
+        <h2 class="section-title">About Us:<br />The One Wellness Workshop</h2>
+        <span class="title-rule" aria-hidden="true"></span>
+      </div>
+      <div class="container purpose-stack">
+        <div class="purpose-block">
+          <p class="purpose-label">Mission</p>
+          <p class="purpose-text">To promote simple and effective traditional and natural methods that help people stay away from the pain of illness and achieve natural beauty.</p>
         </div>
-        <div class="split-text">
-          <h2 class="section-title">About Us:<br />The One Wellness Workshop</h2>
-          <span class="title-rule left" aria-hidden="true"></span>
-          <p><strong>Mission:</strong> To promote simple and effective traditional and natural methods that help people stay away from the pain of illness and achieve natural beauty.</p>
-          <p><strong>Vision:</strong> To empower the health guardian of every home, bringing self-healing wisdom into thousands of households to safeguard the wellness and happiness of one million families.</p>
+        <span class="purpose-divider" aria-hidden="true"></span>
+        <div class="purpose-block">
+          <p class="purpose-label">Vision</p>
+          <p class="purpose-text">To empower the health guardian of every home, bringing self-healing wisdom into thousands of households to safeguard the wellness and happiness of one million families.</p>
         </div>
       </div>
     </section>
@@ -54,16 +58,16 @@
       </div>
       <div class="container team-grid">
         <article class="team-card">
-          <figure class="team-photo"><img src="assets/team-cherry.jpg" alt="Portrait of Chunyan Xu (Cherry)" loading="lazy" /></figure>
-          <h3>Cherry Xu</h3>
-          <p>Co-founder</p>
-          <p class="bio">Cherry brings twenty years of teaching experience at a leading (211) university in Beijing and was a visiting scholar at Duke University. Since 2014 she has practiced seated meditation and breathwork, and has systematically studied traditional Chinese medicine techniques including paida, gua sha, and acupuncture. She is a provincial-level intangible cultural heritage inheritor of the Ye Family Heart-Method Acupuncture and an inheritor of the Daoist medicine Bian Que daoyin anqiao technique. Her work focuses on mind–body co-regulation, traditional daoyin, and acupuncture therapy, exploring the integration of educational growth and Eastern wellness.</p>
-        </article>
-        <article class="team-card">
           <figure class="team-photo"><img src="assets/team-julia.jpg" alt="Portrait of Qing Zheng (Julia)" loading="lazy" /></figure>
           <h3>Julia Zheng</h3>
           <p>Co-founder</p>
           <p class="bio">Julia practices holistic growth and healing, sharing simple, practical, and effective ideas, methods, and tools that help people rediscover their innately complete selves and live out light, energy, and abundance. Since encountering the Sanjiao tea ceremony in June 2024 and practicing it consistently, she has effectively improved a chronic spinal condition that had troubled her for many years, completely transforming her state of life. She has vowed to share the practice wherever the opportunity arises, helping those who search endlessly for medical answers take back ownership of their health and awareness, and live vivid, blossoming lives.</p>
+        </article>
+        <article class="team-card">
+          <figure class="team-photo"><img src="assets/team-cherry.jpg" alt="Portrait of Chunyan Xu (Cherry)" loading="lazy" /></figure>
+          <h3>Cherry Xu</h3>
+          <p>Co-founder</p>
+          <p class="bio">Cherry brings twenty years of teaching experience at a leading (211) university in Beijing and was a visiting scholar at Duke University. Since 2014 she has practiced seated meditation and breathwork, and has systematically studied traditional Chinese medicine techniques including paida, gua sha, and acupuncture. She is a provincial-level intangible cultural heritage inheritor of the Ye Family Heart-Method Acupuncture and an inheritor of the Daoist medicine Bian Que daoyin anqiao technique. Her work focuses on mind–body co-regulation, traditional daoyin, and acupuncture therapy, exploring the integration of educational growth and Eastern wellness.</p>
         </article>
       </div>
     </section>
@@ -128,17 +132,70 @@
       <figure class="container testimonial-photo">
         <img src="assets/testimonies-tea.jpg" alt="Participants gathered around the tea table during a Sanjiao tea ceremony" loading="lazy" />
       </figure>
+
+      <!-- 见证卡片统一格式（首页只展示部分，全部见证在 testimonials.html）：
+           <article class="tcard" data-cats="分类key 分类key">
+             头像 + 姓名/时间 → #病名标签 → 正文段落
+           新增见证时复制整张卡片，替换头像、姓名、标签与正文即可。 -->
       <div class="container testimonial-grid">
-        <blockquote>
-          <p>“My connection with the Sanjiao tea ceremony practice began on December 8, 2023, in the Wuyi Mountains. At that time I was struggling with moderate depression and depended on medication to get through the day, and the side effects were deeply affecting my life and my work. I soon realized that something had to change, so I decided to try stopping the medication and instead joined the Sanjiao practice every morning at six o'clock.</p>
-          <p>Before I knew it, change had quietly taken hold. I began to sleep soundly for about four hours, and even after waking I could stay in a state of deep, restful relaxation. Little by little, life and work returned to their original course. At a gathering in 2024 I met a German doctor of biomedicine who measured my life energy with his instrument. The reading suggested that my depressive state was being held steadily in check by some kind of practice. Curious, he asked what I practiced. I told him: the Sanjiao tea ceremony — and that I drink Sanjiao tea every morning and join the six o'clock online practice group.</p>
-          <p>I have shared this experience many times. Fellow tea practitioners have asked me how I came out of depression without medication. My answer is always the same: “Keep up the Sanjiao practice, and be sure to drink the Sanjiao tea along with it.” To this day I have been practicing and drinking Sanjiao tea for more than two years. My life now feels both sunlit and gentle — clear, steady, and full of inner strength.”</p>
-          <div class="testimonial-person">
-            <img src="assets/testimony-mary-yin.jpg" alt="Portrait of Mingzhu Yin (Mary Yin)" loading="lazy" />
-            <span>— Mary Yin</span>
+
+        <article class="tcard" data-cats="spine heart throat joints digestion sleep skin eyes mood">
+          <header class="tcard-head">
+            <img class="tcard-avatar" src="assets/testimony-julia-zheng.jpg" alt="Portrait of Julia Zheng" loading="lazy" />
+            <div>
+              <h3 class="tcard-name">Julia Zheng</h3>
+              <p class="tcard-meta">Sept 8, 2026</p>
+            </div>
+          </header>
+          <ul class="tcard-tags">
+            <li>#Lumbar disc degeneration</li><li>#Cervical spine</li><li>#Thoracic spine</li><li>#Atrial fibrillation</li><li>#Chronic pharyngitis</li><li>#Knee pain</li><li>#Constipation</li><li>#Insomnia</li><li>#Dry, rough skin</li>
+          </ul>
+          <div class="tcard-body">
+            <p>For seven full years my body was held hostage by severe degeneration of the lumbar discs. At my worst I could not sit, stand, walk or drive for more than fifteen minutes. Even before the pandemic I was confined at home, spending most of every day on a yoga mat or in bed. Over those seven years I tried seventeen different approaches — Eastern and Western, traditional and modern, the practical and the esoteric. Either they did nothing, or they helped a little and then stalled. Not until June 3, 2024, when I encountered the Sanjiao wellness tea ceremony (the "tea practice"), did I truly see daylight.</p>
+            <p>I have now practiced for 27 months, essentially twice a day, and body and mind have been awakened little by little: circulation and metabolism are stirred, self-healing capacity is activated, cell renewal speeds up. Ailments large and small have clearly improved, and some have disappeared altogether. Listening to fellow practitioners share and to Master Wang's responses, my inner growth has been just as quick. A life that had shrunk away has blossomed again.</p>
+            <p>Around day 100 my neck was the first to respond. At first, with the morning's first cup, I could not tilt my head back at all — the pain was severe. By the tenth cup my neck was much looser and I could look up; at about three months I could tilt my head back easily on the very first sip, with no pain at all. I had a quiet sense that the practice would repair me in order: cervical spine, then thoracic, then lumbar.</p>
+            <p>At thirteen months the thoracic spine began to repair, and it continued for about two months. With each exhale there was pain on the right side of the thoracic spine — as I understand it, qi pushing against the lesion. Gradually, sneezing no longer meant back pain and leaking urine, and my bones no longer ached and flared in damp weather. In the autumn and winter of 2025 I visited twelve cities in four months — family, friends, travel, classes — leaving behind for good the life of being trapped at home.</p>
+            <p>At twenty-four months the lumbar repair reached another level. Cooking, gatherings with friends, going out — seven or eight hours in a row without needing to lie down. My quality of life and my whole state of being have turned around completely.</p>
+            <p>Other changes in body and mind have been just as clear:</p>
+            <ul>
+              <li>Atrial fibrillation: from six Holter monitor tests in eight months, with episodes even on medication, to a year and a half of stability on my regular prescription — no more trips to the hospital;</li>
+              <li>Chronic pharyngitis improved; my qi is fuller, my voice is strong, and I can speak in long sentences again;</li>
+              <li>The knee I injured playing volleyball in my youth no longer hurts;</li>
+              <li>My heels no longer crack in winter, and rough skin has become smooth;</li>
+              <li>Constipation improved — from small white pellets to well-formed golden stools;</li>
+              <li>Sleep improved; I sleep through the night;</li>
+              <li>My eyes are bright, age spots have faded, my complexion has gone from dark and dull to rosy, and muscle has come back to my forearms and thighs;</li>
+              <li>Awareness has grown: less duality and judgement, more smiles; a heart that is softer, more relaxed and more playful; less fear, able to take a joke; one persona after another dropped away; from weighing every word to speaking freely; able to let small irritations out as they arise — and my relationship with my husband has improved wonderfully.</li>
+            </ul>
+            <p>My deep gratitude to Master Jianping Wang and to the Sanjiao wellness tea ceremony he created. Beyond what it has done for my body, the daily companionship and response have grown my character — and that is the root of it all.</p>
+            <p>I want to pass this love and blessing on, so that the countless people who, like me, struggle with illness and search endlessly for a cure can take fewer wrong turns, find this practice sooner, benefit sooner, take back ownership of their health and their awareness, and let life blossom again.</p>
           </div>
-        </blockquote>
-        <!-- 新增见证：复制上面一整个 <blockquote> 结构，替换文字、头像与姓名即可 -->
+          <button type="button" class="tcard-more">Read full story</button>
+        </article>
+
+        <article class="tcard" data-cats="mood sleep">
+          <header class="tcard-head">
+            <img class="tcard-avatar" src="assets/testimony-mary-yin.jpg" alt="Portrait of Mingzhu Yin (Mary Yin)" loading="lazy" />
+            <div>
+              <h3 class="tcard-name">Mary Yin</h3>
+              <!-- Date of the note: add <p class="tcard-meta">Jan 1, 2026</p> once known -->
+            </div>
+          </header>
+          <ul class="tcard-tags">
+            <li>#Depression</li><li>#Insomnia</li><li>#Medication side effects</li>
+          </ul>
+          <div class="tcard-body">
+            <p>My connection with the Sanjiao tea ceremony practice began on December 8, 2023, in the Wuyi Mountains. At that time I was struggling with moderate depression and depended on medication to get through the day, and the side effects were deeply affecting my life and my work. I soon realized that something had to change, so I decided to try stopping the medication and instead joined the Sanjiao practice every morning at six o'clock.</p>
+            <p>Before I knew it, change had quietly taken hold. I began to sleep soundly for about four hours, and even after waking I could stay in a state of deep, restful relaxation. Little by little, life and work returned to their original course. At a gathering in 2024 I met a German doctor of biomedicine who measured my life energy with his instrument. The reading suggested that my depressive state was being held steadily in check by some kind of practice. Curious, he asked what I practiced. I told him: the Sanjiao tea ceremony — and that I drink Sanjiao tea every morning and join the six o'clock online practice group.</p>
+            <p>I have shared this experience many times. Fellow tea practitioners have asked me how I came out of depression without medication. My answer is always the same: "Keep up the Sanjiao practice, and be sure to drink the Sanjiao tea along with it." To this day I have been practicing and drinking Sanjiao tea for more than two years. My life now feels both sunlit and gentle — clear, steady, and full of inner strength.</p>
+          </div>
+          <button type="button" class="tcard-more">Read full story</button>
+        </article>
+
+      </div>
+
+      <div class="container section-cta">
+        <a class="btn btn-primary" href="testimonials.html">Read more testimonials →</a>
       </div>
     </section>
 
@@ -181,6 +238,23 @@
                 <p class="offline-date">Aug 2, 2025 · Cary, North Carolina</p>
                 <h3>In-person sharing in Cary, NC</h3>
                 <p>Sharing simple and effective self-healing methods with everyone who felt drawn to join, helping participants care for sub-health conditions.</p>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline-year"><span>2024</span></li>
+          <li class="timeline-item">
+            <article class="offline-card">
+              <figure class="offline-gallery">
+                <!-- 这张照片原来放在“关于我们”，现移到线下活动回顾 -->
+                <button type="button" class="gallery-item" data-caption="Aug 10, 2024 · Beijing — Tea gathering at NUO Hotel Beijing">
+                  <img src="assets/about-class.jpg" alt="Participants practicing together at the in-person tea gathering at NUO Hotel Beijing on August 10, 2024" loading="lazy" />
+                </button>
+              </figure>
+              <div class="offline-body">
+                <p class="offline-date">Aug 10, 2024 · Beijing</p>
+                <h3>Tea gathering at NUO Hotel Beijing</h3>
+                <p>An in-person tea gathering at NUO Hotel Beijing, where practitioners came together to practice, share, and learn the Sanjiao tea ceremony side by side.</p>
               </div>
             </article>
           </li>
@@ -351,5 +425,6 @@
       });
     })();
   </script>
+  <script src="testimonials.js"></script>
 </body>
 </html>
