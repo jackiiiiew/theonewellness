@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>学员见证 · 合一健康共修所</title>
-  <meta name="description" content="三焦养生茶道学员见证合集：腰椎、颈椎、心脏、睡眠、情绪、肠胃、关节、眼睛等不同调理经历，可按病症分类查看。" />
+  <meta name="description" content="三焦养生茶道学员见证合集：便秘、失眠、颈椎、腰椎、心脏、湿疹、高血糖、高血压、结节等不同调理经历，可按病症分类查看。" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -35,28 +35,31 @@
     </section>
 
     <section class="section section-light">
-      <!-- 病症筛选：分类 key 与卡片上的 data-cats 对应；
-           某个分类下暂时没有见证时，按钮会自动隐藏。 -->
+      <!-- 病症筛选：分类 key 与卡片上的 data-cats 对应：
+           constipation 便秘 / bloodsugar 高血糖 / bloodpressure 高血压 /
+           nodules 结节 / cervical 颈椎 / insomnia 失眠 / eczema 湿疹 /
+           heart 心脏 / lumbar 腰椎。九个分类固定显示，暂时没有见证的计数为 0。 -->
       <div class="container filter-bar" role="group" aria-label="按病症筛选见证">
         <p class="filter-label">按病症查看</p>
         <button type="button" class="filter-chip" data-cat="all" aria-pressed="true">全部 </button>
-        <button type="button" class="filter-chip" data-cat="spine" aria-pressed="false">颈肩腰背 </button>
+        <button type="button" class="filter-chip" data-cat="constipation" aria-pressed="false">便秘 </button>
+        <button type="button" class="filter-chip" data-cat="bloodsugar" aria-pressed="false">高血糖 </button>
+        <button type="button" class="filter-chip" data-cat="bloodpressure" aria-pressed="false">高血压 </button>
+        <button type="button" class="filter-chip" data-cat="nodules" aria-pressed="false">结节 </button>
+        <button type="button" class="filter-chip" data-cat="cervical" aria-pressed="false">颈椎 </button>
+        <button type="button" class="filter-chip" data-cat="insomnia" aria-pressed="false">失眠 </button>
+        <button type="button" class="filter-chip" data-cat="eczema" aria-pressed="false">湿疹 </button>
         <button type="button" class="filter-chip" data-cat="heart" aria-pressed="false">心脏 </button>
-        <button type="button" class="filter-chip" data-cat="sleep" aria-pressed="false">睡眠 </button>
-        <button type="button" class="filter-chip" data-cat="mood" aria-pressed="false">情绪心性 </button>
-        <button type="button" class="filter-chip" data-cat="digestion" aria-pressed="false">肠胃 </button>
-        <button type="button" class="filter-chip" data-cat="joints" aria-pressed="false">关节 </button>
-        <button type="button" class="filter-chip" data-cat="bone" aria-pressed="false">骨骼 </button>
-        <button type="button" class="filter-chip" data-cat="eyes" aria-pressed="false">眼睛 </button>
-        <button type="button" class="filter-chip" data-cat="throat" aria-pressed="false">咽喉 </button>
-        <button type="button" class="filter-chip" data-cat="skin" aria-pressed="false">皮肤 </button>
+        <button type="button" class="filter-chip" data-cat="lumbar" aria-pressed="false">腰椎 </button>
       </div>
 
       <!-- 新增见证：复制一整张 <article class="tcard"> ，替换头像、姓名、
-           时间、#病名标签与正文；并在 data-cats 里填上对应的分类 key。 -->
+           时间、标签与正文；并在 data-cats 里填上对应的分类 key。
+           标签分两行：.key 行写这条见证命中的筛选关键词（顺序与筛选条一致），
+           .detail 行写具体病名，只作说明、不参与筛选。 -->
       <div class="container testimonial-grid">
 
-        <article class="tcard" data-cats="spine heart throat joints digestion sleep skin eyes mood">
+        <article class="tcard" data-cats="cervical constipation heart insomnia lumbar">
           <header class="tcard-head">
             <img class="tcard-avatar" src="assets/testimony-julia-zheng.jpg" alt="郑青（Julia Zheng）照片" loading="lazy" />
             <div>
@@ -64,8 +67,11 @@
               <p class="tcard-meta">2026.09.08</p>
             </div>
           </header>
-          <ul class="tcard-tags">
-            <li>#腰椎间盘退行</li><li>#颈椎</li><li>#胸椎</li><li>#房颤</li><li>#慢性咽炎</li><li>#膝关节</li><li>#便秘</li><li>#失眠</li><li>#皮肤粗糙</li>
+          <ul class="tcard-tags key" aria-label="对应筛选分类">
+            <li>#便秘</li><li>#颈椎</li><li>#失眠</li><li>#心脏</li><li>#腰椎</li>
+          </ul>
+          <ul class="tcard-tags detail" aria-label="其他调理改善">
+            <li>#腰椎间盘退行</li><li>#胸椎</li><li>#房颤</li><li>#慢性咽炎</li><li>#膝关节</li><li>#皮肤粗糙</li>
           </ul>
           <div class="tcard-body">
             <p>我的身体曾被严重的腰椎间盘退行困扰了整整七年。最差时，坐、站、走、开车都撑不过 15 分钟，疫情前就被困在家里，每天大部分时间只能在瑜伽垫和床上度过。七年里，我试过 17 种方法：东方的、西方的、传统的、现代的，实的玄的……要么无效，要么稍有起色就卡住。直到 2024 年 6 月 3 日与三焦养生茶道（以下简称“茶道”）结缘，才真正见到曙光。</p>
@@ -90,7 +96,7 @@
           <button type="button" class="tcard-more">展开全文</button>
         </article>
 
-        <article class="tcard" data-cats="eyes digestion sleep heart joints mood">
+        <article class="tcard" data-cats="constipation heart insomnia">
           <header class="tcard-head">
             <img class="tcard-avatar" src="assets/testimony-xia-jing.jpg" alt="夏菁照片" loading="lazy" />
             <div>
@@ -98,8 +104,11 @@
               <p class="tcard-meta">2026.09.07</p>
             </div>
           </header>
-          <ul class="tcard-tags">
-            <li>#心动过速</li><li>#眼干涩</li><li>#白内障</li><li>#畏光</li><li>#便秘</li><li>#失眠</li><li>#膝关节</li>
+          <ul class="tcard-tags key" aria-label="对应筛选分类">
+            <li>#便秘</li><li>#失眠</li><li>#心脏</li>
+          </ul>
+          <ul class="tcard-tags detail" aria-label="其他调理改善">
+            <li>#心动过速</li><li>#眼干涩</li><li>#白内障</li><li>#畏光</li><li>#膝关节</li>
           </ul>
           <div class="tcard-body">
             <p>学长们好，分享一下我练习三焦养生茶道三年零十个月的真实体会。</p>
@@ -119,7 +128,7 @@
           <button type="button" class="tcard-more">展开全文</button>
         </article>
 
-        <article class="tcard" data-cats="heart bone joints spine sleep mood">
+        <article class="tcard" data-cats="heart insomnia lumbar">
           <header class="tcard-head">
             <img class="tcard-avatar" src="assets/testimony-zhang-wei.jpg" alt="张炜照片" loading="lazy" />
             <div>
@@ -127,8 +136,11 @@
               <!-- 留言日期：拿到后填 <p class="tcard-meta">2026.01.01</p> -->
             </div>
           </header>
-          <ul class="tcard-tags">
-            <li>#冠心病</li><li>#心绞痛</li><li>#骨质疏松</li><li>#髋关节术后</li><li>#膝关节</li><li>#腰疼</li><li>#失眠</li>
+          <ul class="tcard-tags key" aria-label="对应筛选分类">
+            <li>#失眠</li><li>#心脏</li><li>#腰椎</li>
+          </ul>
+          <ul class="tcard-tags detail" aria-label="其他调理改善">
+            <li>#冠心病</li><li>#心绞痛</li><li>#骨质疏松</li><li>#髋关节术后</li><li>#膝关节</li><li>#腰疼</li>
           </ul>
           <div class="tcard-body">
             <p>今年 10 月，我就年满 92 周岁了。大约在三年前，2023 年的 10 月，我开始喝王建平老师研制和带领的三焦养生茶。</p>
@@ -146,7 +158,7 @@
           <button type="button" class="tcard-more">展开全文</button>
         </article>
 
-        <article class="tcard" data-cats="mood sleep">
+        <article class="tcard" data-cats="insomnia">
           <header class="tcard-head">
             <img class="tcard-avatar" src="assets/testimony-mary-yin.jpg" alt="印明珠（Mary Yin）照片" loading="lazy" />
             <div>
@@ -154,8 +166,11 @@
               <!-- 留言日期：拿到后填 <p class="tcard-meta">2026.01.01</p> -->
             </div>
           </header>
-          <ul class="tcard-tags">
-            <li>#抑郁症</li><li>#失眠</li><li>#药物副作用</li>
+          <ul class="tcard-tags key" aria-label="对应筛选分类">
+            <li>#失眠</li>
+          </ul>
+          <ul class="tcard-tags detail" aria-label="其他调理改善">
+            <li>#抑郁症</li><li>#药物副作用</li>
           </ul>
           <div class="tcard-body">
             <p>我与三焦养生茶道功法的缘分，始于 2023 年 12 月 8 日的武夷山。那时，我正处于中度抑郁的困扰中，依赖药物维持，而药物带来的副作用深深影响着我的生活与工作。很快，我意识到必须做出改变，于是决定尝试停药，转而每天清晨六点准时参加三焦养生功法的修炼。</p>

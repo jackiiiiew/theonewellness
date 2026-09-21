@@ -43,7 +43,6 @@
           <p class="purpose-label">Mission</p>
           <p class="purpose-text">To promote simple and effective traditional and natural methods that help people stay away from the pain of illness and achieve natural beauty.</p>
         </div>
-        <span class="purpose-divider" aria-hidden="true"></span>
         <div class="purpose-block">
           <p class="purpose-label">Vision</p>
           <p class="purpose-text">To empower the health guardian of every home, bringing self-healing wisdom into thousands of households to safeguard the wellness and happiness of one million families.</p>
@@ -135,11 +134,33 @@
 
       <!-- 见证卡片统一格式（首页只展示部分，全部见证在 testimonials.html）：
            <article class="tcard" data-cats="分类key 分类key">
-             头像 + 姓名/时间 → #病名标签 → 正文段落
+             头像 + 姓名/时间 → 筛选关键词标签（.key）→ 具体病名标签（.detail）→ 正文段落
            新增见证时复制整张卡片，替换头像、姓名、标签与正文即可。 -->
       <div class="container testimonial-grid">
 
-        <article class="tcard" data-cats="spine heart throat joints digestion sleep skin eyes mood">
+        <article class="tcard" data-cats="insomnia">
+          <header class="tcard-head">
+            <img class="tcard-avatar" src="assets/testimony-mary-yin.jpg" alt="Portrait of Mingzhu Yin (Mary Yin)" loading="lazy" />
+            <div>
+              <h3 class="tcard-name">Mary Yin</h3>
+              <!-- Date of the note: add <p class="tcard-meta">Jan 1, 2026</p> once known -->
+            </div>
+          </header>
+          <ul class="tcard-tags key" aria-label="Filter categories">
+            <li>#Insomnia</li>
+          </ul>
+          <ul class="tcard-tags detail" aria-label="Other improvements">
+            <li>#Depression</li><li>#Medication side effects</li>
+          </ul>
+          <div class="tcard-body">
+            <p>My connection with the Sanjiao tea ceremony practice began on December 8, 2023, in the Wuyi Mountains. At that time I was struggling with moderate depression and depended on medication to get through the day, and the side effects were deeply affecting my life and my work. I soon realized that something had to change, so I decided to try stopping the medication and instead joined the Sanjiao practice every morning at six o'clock.</p>
+            <p>Before I knew it, change had quietly taken hold. I began to sleep soundly for about four hours, and even after waking I could stay in a state of deep, restful relaxation. Little by little, life and work returned to their original course. At a gathering in 2024 I met a German doctor of biomedicine who measured my life energy with his instrument. The reading suggested that my depressive state was being held steadily in check by some kind of practice. Curious, he asked what I practiced. I told him: the Sanjiao tea ceremony — and that I drink Sanjiao tea every morning and join the six o'clock online practice group.</p>
+            <p>I have shared this experience many times. Fellow tea practitioners have asked me how I came out of depression without medication. My answer is always the same: "Keep up the Sanjiao practice, and be sure to drink the Sanjiao tea along with it." To this day I have been practicing and drinking Sanjiao tea for more than two years. My life now feels both sunlit and gentle — clear, steady, and full of inner strength.</p>
+          </div>
+          <button type="button" class="tcard-more">Read full story</button>
+        </article>
+
+        <article class="tcard" data-cats="cervical constipation heart insomnia lumbar">
           <header class="tcard-head">
             <img class="tcard-avatar" src="assets/testimony-julia-zheng.jpg" alt="Portrait of Julia Zheng" loading="lazy" />
             <div>
@@ -147,8 +168,11 @@
               <p class="tcard-meta">Sept 8, 2026</p>
             </div>
           </header>
-          <ul class="tcard-tags">
-            <li>#Lumbar disc degeneration</li><li>#Cervical spine</li><li>#Thoracic spine</li><li>#Atrial fibrillation</li><li>#Chronic pharyngitis</li><li>#Knee pain</li><li>#Constipation</li><li>#Insomnia</li><li>#Dry, rough skin</li>
+          <ul class="tcard-tags key" aria-label="Filter categories">
+            <li>#Cervical spine</li><li>#Constipation</li><li>#Heart</li><li>#Insomnia</li><li>#Lumbar spine</li>
+          </ul>
+          <ul class="tcard-tags detail" aria-label="Other improvements">
+            <li>#Lumbar disc degeneration</li><li>#Thoracic spine</li><li>#Atrial fibrillation</li><li>#Chronic pharyngitis</li><li>#Knee pain</li><li>#Dry, rough skin</li>
           </ul>
           <div class="tcard-body">
             <p>For seven full years my body was held hostage by severe degeneration of the lumbar discs. At my worst I could not sit, stand, walk or drive for more than fifteen minutes. Even before the pandemic I was confined at home, spending most of every day on a yoga mat or in bed. Over those seven years I tried seventeen different approaches — Eastern and Western, traditional and modern, the practical and the esoteric. Either they did nothing, or they helped a little and then stalled. Not until June 3, 2024, when I encountered the Sanjiao wellness tea ceremony (the "tea practice"), did I truly see daylight.</p>
@@ -169,25 +193,6 @@
             </ul>
             <p>My deep gratitude to Master Jianping Wang and to the Sanjiao wellness tea ceremony he created. Beyond what it has done for my body, the daily companionship and response have grown my character — and that is the root of it all.</p>
             <p>I want to pass this love and blessing on, so that the countless people who, like me, struggle with illness and search endlessly for a cure can take fewer wrong turns, find this practice sooner, benefit sooner, take back ownership of their health and their awareness, and let life blossom again.</p>
-          </div>
-          <button type="button" class="tcard-more">Read full story</button>
-        </article>
-
-        <article class="tcard" data-cats="mood sleep">
-          <header class="tcard-head">
-            <img class="tcard-avatar" src="assets/testimony-mary-yin.jpg" alt="Portrait of Mingzhu Yin (Mary Yin)" loading="lazy" />
-            <div>
-              <h3 class="tcard-name">Mary Yin</h3>
-              <!-- Date of the note: add <p class="tcard-meta">Jan 1, 2026</p> once known -->
-            </div>
-          </header>
-          <ul class="tcard-tags">
-            <li>#Depression</li><li>#Insomnia</li><li>#Medication side effects</li>
-          </ul>
-          <div class="tcard-body">
-            <p>My connection with the Sanjiao tea ceremony practice began on December 8, 2023, in the Wuyi Mountains. At that time I was struggling with moderate depression and depended on medication to get through the day, and the side effects were deeply affecting my life and my work. I soon realized that something had to change, so I decided to try stopping the medication and instead joined the Sanjiao practice every morning at six o'clock.</p>
-            <p>Before I knew it, change had quietly taken hold. I began to sleep soundly for about four hours, and even after waking I could stay in a state of deep, restful relaxation. Little by little, life and work returned to their original course. At a gathering in 2024 I met a German doctor of biomedicine who measured my life energy with his instrument. The reading suggested that my depressive state was being held steadily in check by some kind of practice. Curious, he asked what I practiced. I told him: the Sanjiao tea ceremony — and that I drink Sanjiao tea every morning and join the six o'clock online practice group.</p>
-            <p>I have shared this experience many times. Fellow tea practitioners have asked me how I came out of depression without medication. My answer is always the same: "Keep up the Sanjiao practice, and be sure to drink the Sanjiao tea along with it." To this day I have been practicing and drinking Sanjiao tea for more than two years. My life now feels both sunlit and gentle — clear, steady, and full of inner strength.</p>
           </div>
           <button type="button" class="tcard-more">Read full story</button>
         </article>
@@ -260,6 +265,10 @@
           </li>
         </ol>
       </div>
+      <div class="container section-cta">
+        <button type="button" class="btn btn-primary timeline-more"
+                data-more="Show all gatherings" data-less="Show less" aria-expanded="false" hidden>Show all gatherings</button>
+      </div>
     </section>
 
     <section id="events" class="section event-section">
@@ -274,30 +283,66 @@
     </section>
 
     <section id="donate" class="section section-warm">
-      <div class="container split-grid reverse">
-        <div class="split-text">
-          <p class="section-kicker">Donate</p>
-          <h2>Support wellness education</h2>
-          <p>We are deeply grateful for every donation. No matter the amount, your generosity goes directly toward two purposes:</p>
-          <ul class="checklist single">
-            <li>Spreading the Sanjiao tea ceremony and other simple, effective self-healing methods: promoting the Sanjiao tea ceremony worldwide, so more people can take back ownership of their own health;</li>
-            <li>Supporting families in financial hardship in restoring their sub-health conditions.</li>
-          </ul>
-          <h3 class="subheading">Ways to give</h3>
-          <p><strong>Zelle:</strong> scan the QR code to donate.</p>
-          <div class="donate-qr-slot"></div>
-          <p><strong>Pay by check:</strong></p>
+      <div class="container center-text narrow">
+        <p class="section-kicker">Donate</p>
+        <h2 class="section-title">Walk with us</h2>
+        <span class="title-rule" aria-hidden="true"></span>
+      </div>
+
+      <div class="container narrow donate-intro">
+        <p>No matter the amount, we are grateful for every gift. Together we reach out our hands and pass this love on, helping the Sanjiao tea ceremony reach every corner of the world — and every person and every family who needs it.</p>
+        <p>Your gift goes entirely toward promoting the Sanjiao tea ceremony worldwide: holding tea gatherings online and in person, and organizing experience, sharing and teaching sessions.</p>
+      </div>
+
+      <!-- Ways to give: one card per method, reusing the .info-card style.
+           To add a method, copy an <article class="info-card donate-way"> and continue the numbering. -->
+      <div class="container card-grid three donate-ways">
+        <article class="info-card donate-way">
+          <p class="donate-way-num">01</p>
+          <h3>Give online with Zelle</h3>
+          <p>Scan the QR code to give in seconds.</p>
+          <figure class="donate-qr">
+            <img src="assets/donate-zelle.png" alt="Zelle donation QR code" loading="lazy" />
+          </figure>
+        </article>
+        <article class="info-card donate-way">
+          <p class="donate-way-num">02</p>
+          <h3>Wire transfer</h3>
+          <p>For a wire transfer, please contact us for the account details.</p>
+          <a class="text-link" href="mailto:theonewellnessofficial@gmail.com">theonewellnessofficial@gmail.com</a>
+        </article>
+        <article class="info-card donate-way">
+          <p class="donate-way-num">03</p>
+          <h3>Pay by check</h3>
           <ul class="donate-details">
             <li><span>Payable to</span>The One Wellness Workshop</li>
             <li><span>Memo</span>Donor's name and email address</li>
             <li><span>Mail to</span>110 Sir Walker Ln, Cary, NC 27519</li>
           </ul>
-          <p class="donate-tax">The One Wellness Workshop is a 501(c)(3) tax-exempt nonprofit organization (EIN: 99-1560868). Donations are tax-deductible to the extent allowed by law.</p>
-          <a class="btn btn-primary" href="#contact">Contact Us</a>
-        </div>
-        <figure class="donate-box has-image">
-          <img src="assets/donate-zelle.png" alt="Zelle donation QR code" loading="lazy" />
-        </figure>
+        </article>
+      </div>
+
+      <div class="container donate-legal">
+        <h3 class="subheading">Tax-exempt status</h3>
+        <p>The One Wellness Workshop is a 501(c)(3) tax-exempt nonprofit organization recognized by the IRS (EIN: 99-1560868). Your donation is tax-deductible to the extent allowed by law.</p>
+        <p>Whichever way you choose to give, please include the donor's name and contact details in the memo so that we can issue a proper donation receipt.</p>
+        <a class="btn btn-primary" href="#contact">Contact Us</a>
+      </div>
+    </section>
+
+    <section id="volunteer" class="section">
+      <div class="container center-text narrow">
+        <p class="section-kicker">Join us</p>
+        <h2 class="section-title">Volunteer with us</h2>
+        <span class="title-rule" aria-hidden="true"></span>
+      </div>
+      <blockquote class="container quote-plain">Mother Teresa said: “Not all of us can do great things. But we can do small things with great love.”</blockquote>
+      <div class="container narrow volunteer-body">
+        <p>Whether your strength is planning, translation or design, community building or event support — even playing the music at an online tea gathering, taking a turn on duty, leading a round of tea, or simply sharing a post with a few taps — every offering is precious, and each one keeps the energy of love flowing.</p>
+        <p>To volunteer or ask a question, write to us at <a class="text-link" href="mailto:theonewellnessofficial@gmail.com">theonewellnessofficial@gmail.com</a></p>
+      </div>
+      <div class="container closing-note">
+        <p>Most important of all: each day, gather your attention back to yourself, love yourself through the Sanjiao tea ceremony, and live as a light for your own life — and the world around you will be quietly brightened.</p>
       </div>
     </section>
 
@@ -334,22 +379,6 @@
         toggle.setAttribute('aria-expanded', 'false');
       });
     });
-
-    // 捐赠二维码：桌面端显示在右侧栏，手机端移动到 Zelle 文字下方（同一张图，不重复）
-    const donateQr = document.querySelector('#donate .donate-box.has-image');
-    const donateQrSlot = document.querySelector('#donate .donate-qr-slot');
-    const donateGrid = document.querySelector('#donate .split-grid');
-    const mqMobile = window.matchMedia('(max-width: 900px)');
-    function placeDonateQr() {
-      if (!donateQr || !donateQrSlot || !donateGrid) return;
-      if (mqMobile.matches) {
-        donateQrSlot.appendChild(donateQr);
-      } else {
-        donateGrid.appendChild(donateQr);
-      }
-    }
-    placeDonateQr();
-    mqMobile.addEventListener('change', placeDonateQr);
 
     // 线下活动照片灯箱：点击照片全屏查看，同一场活动的多张照片可左右切换
     (function () {
@@ -422,6 +451,43 @@
         if (e.key === 'Escape') close();
         if (e.key === 'ArrowLeft') step(-1);
         if (e.key === 'ArrowRight') step(1);
+      });
+    })();
+
+    // 线下活动回顾：首页默认只展示最近两场，点「展开全部活动」看完整时间轴。
+    // 用 JS 做折叠（渐进增强）：没有 JS 时全部活动照常显示，按钮不出现。
+    (function () {
+      const list = document.querySelector('.timeline-list');
+      const btn = document.querySelector('.timeline-more');
+      if (!list || !btn) return;
+      const LIMIT = 2;
+      const items = Array.from(list.querySelectorAll('.timeline-item'));
+      if (items.length <= LIMIT) return;
+      const extra = items.slice(LIMIT);
+      const years = Array.from(list.querySelectorAll('.timeline-year'));
+
+      function apply(collapsed) {
+        extra.forEach((el) => { el.hidden = collapsed; });
+        // 某个年份下面的活动全被收起时，这个年份节点也一起收起
+        years.forEach((y) => {
+          let n = y.nextElementSibling;
+          let any = false;
+          while (n && !n.classList.contains('timeline-year')) {
+            if (n.classList.contains('timeline-item') && !n.hidden) any = true;
+            n = n.nextElementSibling;
+          }
+          y.hidden = !any;
+        });
+      }
+
+      apply(true);
+      btn.hidden = false;
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        apply(open);
+        btn.setAttribute('aria-expanded', String(!open));
+        btn.textContent = open ? btn.dataset.more : btn.dataset.less;
+        if (open) document.getElementById('offline').scrollIntoView({ block: 'start', behavior: 'smooth' });
       });
     })();
   </script>

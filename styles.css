@@ -217,6 +217,8 @@ p  { color: var(--muted); }
   align-items: center;
   justify-content: center;
   padding: 0 30px;
+  border: 0;              /* <button> 默认带灰边，看起来像阴影，这里去掉 */
+  cursor: pointer;
   border-radius: var(--radius);
   font-weight: 700;
   font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -297,8 +299,6 @@ p  { color: var(--muted); }
   gap: 64px;
   align-items: center;
 }
-.reverse .split-text { order: 1; }
-.reverse .donate-box { order: 2; }
 
 .split-image img {
   width: 100%;
@@ -419,18 +419,6 @@ blockquote span {
   padding: 0 38px;
 }
 
-.donate-box {
-  min-height: 300px;
-  border-radius: var(--radius);
-  border: 1px dashed #cfcfcf;
-  background: var(--white);
-  display: grid;
-  place-items: center;
-  color: var(--muted);
-  font-weight: 700;
-  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
-}
-
 .contact-section { background: var(--white); }
 
 /* --------------------------------------------------------------------------
@@ -477,34 +465,34 @@ blockquote span {
    不用卡片、不用图标：上下两段大字宣言，居中排版，中间以黄色短线分隔。
    -------------------------------------------------------------------------- */
 .purpose-stack {
-  max-width: 940px;
+  max-width: 900px;
   margin: 46px auto 0;
-  text-align: center;
+  text-align: left;           /* 标题仍居中，使命／愿景正文左对齐 */
 }
-.purpose-block + .purpose-divider { margin: 44px auto; }
-.purpose-divider {
-  display: block;
-  width: 56px;
-  height: 3px;
-  background: var(--yellow);
-  border: 0;
+.purpose-block {
+  display: grid;
+  grid-template-columns: 140px 1fr;   /* 左：标签　右：正文 */
+  gap: 0 44px;
+  padding: 28px 0;
+  border-top: 1px solid var(--yellow);
 }
+.purpose-block:last-of-type { border-bottom: 1px solid var(--yellow); }
 .purpose-label {
-  margin: 0 0 16px;
+  margin: 7px 0 0;
   font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  font-size: 19px;
+  letter-spacing: 2.4px;
+  font-size: 13px;
   font-weight: 800;
   color: var(--blue);
 }
 .purpose-block p.purpose-text {
   margin: 0;
   font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 33px;            /* 与 h2 标题同一字号 */
-  font-weight: 700;
-  line-height: 1.6;
-  letter-spacing: .5px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.7;
+  letter-spacing: .3px;
   color: var(--charcoal);
 }
 
@@ -571,6 +559,19 @@ blockquote span {
   border: 1px solid rgba(255, 202, 31, .55);
   border-radius: var(--radius);
   padding: 3px 10px;
+}
+
+/* 病症标签分两行：
+   .key    —— 与筛选按钮一一对应的分类（黄底，醒目，点了筛选进来能对上号）
+   .detail —— 这条见证里具体的病名（浅色描边，作补充说明，不参与筛选）
+   只有一行标签时，间距自动回到原来的 18px。 */
+.tcard-tags.key { margin-bottom: 8px; }
+.tcard-tags.key:last-of-type { margin-bottom: 18px; }
+.tcard-tags.detail li {
+  font-weight: 400;
+  color: var(--muted-soft);
+  background: transparent;
+  border-color: #dcdcdc;
 }
 
 .tcard-body { position: relative; }
@@ -973,25 +974,92 @@ body.lightbox-open { overflow: hidden; }
   margin: 0 0 18px;
 }
 
-/* Donate QR (replaces the dashed placeholder box when an image is present) */
-.donate-box.has-image {
+/* 捐赠：开头两段说明。与「三焦养生茶道从何而来」一样用 .narrow 窄栏，
+   左对齐但不贴到版心最左边。 */
+.donate-intro { margin-top: 26px; }
+.donate-intro p { margin: 0 0 14px; }
+.donate-intro p:last-child { margin-bottom: 0; }
+
+/* 不带方框的引言（义工招募里的特蕾莎修女语录）
+   —— 与三焦茶道那条卡片式 blockquote(.tea-vow) 区分开 */
+.quote-plain {
+  max-width: 720px;
+  margin: 32px auto 0;
+  padding: 0;
   border: 0;
   background: transparent;
-  min-height: 0;
-  margin: 0;
-  padding: 0;
-}
-.donate-box.has-image img {
-  width: min(320px, 100%);
-  height: auto;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background: var(--white);
+  text-align: center;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 20px;
+  line-height: 1.8;
+  font-weight: 600;
+  color: var(--charcoal);
 }
 
-/* 手机端二维码插槽：桌面端为空，不占空间 */
-.donate-qr-slot { margin: 0; }
-.donate-qr-slot:not(:empty) { margin: 12px 0 26px; }
+/* 捐赠方式卡片（Zelle / 电汇 / 支票），沿用 .info-card 的黄色顶边 */
+.donate-ways { margin-top: 34px; }
+.donate-way-num {
+  margin: 0 0 10px;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2.4px;
+  color: var(--blue);
+}
+.donate-way h3 { margin-bottom: 10px; }
+.donate-way p { margin: 0 0 12px; }
+.donate-way .text-link { margin-top: 0; word-break: break-word; }
+.donate-qr { margin: 14px 0 0; }
+.donate-qr img {
+  width: min(190px, 100%);
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+/* 卡片里的支票信息不再另外加框，避免框中框 */
+.donate-way .donate-details {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+.donate-way .donate-details li {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  padding: 5px 0;
+}
+.donate-way .donate-details li span {
+  min-width: 0;
+  font-size: 15px;
+  color: var(--muted-soft);
+}
+
+/* 免税声明：整行宽度，与上面的三张卡片左右对齐 */
+.donate-legal { margin-top: 42px; }
+.donate-legal .subheading { margin-top: 0; }
+.donate-legal .btn { margin-top: 12px; }
+
+/* 义工招募 + 结尾寄语 */
+.volunteer-body { margin-top: 30px; }
+.closing-note {
+  max-width: 860px;
+  margin: 52px auto 0;
+  padding: 34px 20px;
+  text-align: center;
+  border-top: 3px solid var(--yellow);
+  border-bottom: 3px solid var(--yellow);
+}
+.closing-note p {
+  margin: 0;
+  font-family: "Raleway", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 25px;
+  line-height: 1.75;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--charcoal);
+}
 
 .site-footer {
   background: #222222;
@@ -1045,9 +1113,15 @@ body.lightbox-open { overflow: hidden; }
     grid-template-columns: 1fr;
   }
 
-  /* 使命 / 愿景：手机端收紧间距 */
+  /* 使命 / 愿景：手机端标签移到正文上方，间距收紧 */
   .purpose-stack { margin-top: 34px; }
-  .purpose-block + .purpose-divider { margin: 32px auto; }
+  .purpose-block {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 22px 0;
+  }
+  .purpose-label { margin-top: 0; }
+  .purpose-block p.purpose-text { font-size: 21px; }
 
   /* 见证卡：手机端收窄内边距，头像略小 */
   .tcard { padding: 24px 22px 22px; }
@@ -1067,12 +1141,10 @@ body.lightbox-open { overflow: hidden; }
   .checklist { grid-template-columns: 1fr; }
   .event-card { flex-direction: column; align-items: flex-start; gap: 26px; }
 
-  /* 手机端：二维码由脚本移入 .donate-qr-slot，显示在 Zelle 文字下方并居中 */
-  .donate-qr-slot .donate-box.has-image {
-    display: grid;
-    justify-content: center;
-  }
-  .donate-qr-slot .donate-box.has-image img { width: min(240px, 100%); }
+  /* 捐赠方式：手机端单列，二维码略放大一点 */
+  .donate-qr img { width: min(240px, 100%); }
+  .closing-note { padding: 26px 4px; margin-top: 40px; }
+  .closing-note p { font-size: 20px; letter-spacing: .5px; }
 }
 
 @media (max-width: 560px) {
@@ -1085,8 +1157,7 @@ body.lightbox-open { overflow: hidden; }
   .hero-lockup { width: min(120px, 42%); }
   .hero-title { font-size: 36px; letter-spacing: 3px; margin-top: 32px; }
   h2 { font-size: 27px; }
-  .purpose-label { font-size: 17px; }
-  .purpose-block p.purpose-text { font-size: 27px; }   /* 与手机端 h2 一致 */
+  .purpose-block p.purpose-text { font-size: 19px; }
 
   /* 时间轴：窄屏收窄左侧留白 */
   .timeline-list { padding-left: 26px; }

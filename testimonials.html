@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Testimonials · One Wellness Workshop</title>
-  <meta name="description" content="Testimonials from Sanjiao tea ceremony practitioners — spine, heart, sleep, mood, digestion, joints and eyes — filterable by condition." />
+  <meta name="description" content="Testimonials from Sanjiao tea ceremony practitioners — constipation, insomnia, cervical spine, lumbar spine, heart, eczema, high blood sugar, high blood pressure and nodules — filterable by condition." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -36,27 +36,31 @@
 
     <section class="section section-light">
       <!-- Filter chips: each data-cat matches the data-cats on the cards.
-           A category with no testimonials yet is hidden automatically. -->
+           Keys: cervical / constipation / eczema / heart / bloodpressure /
+           bloodsugar / insomnia / lumbar / nodules.
+           All chips stay visible; an empty category simply shows a count of 0. -->
       <div class="container filter-bar" role="group" aria-label="Filter testimonials by condition">
         <p class="filter-label">Browse by condition</p>
         <button type="button" class="filter-chip" data-cat="all" aria-pressed="true">All </button>
-        <button type="button" class="filter-chip" data-cat="spine" aria-pressed="false">Spine &amp; back </button>
+        <button type="button" class="filter-chip" data-cat="cervical" aria-pressed="false">Cervical spine </button>
+        <button type="button" class="filter-chip" data-cat="constipation" aria-pressed="false">Constipation </button>
+        <button type="button" class="filter-chip" data-cat="eczema" aria-pressed="false">Eczema </button>
         <button type="button" class="filter-chip" data-cat="heart" aria-pressed="false">Heart </button>
-        <button type="button" class="filter-chip" data-cat="sleep" aria-pressed="false">Sleep </button>
-        <button type="button" class="filter-chip" data-cat="mood" aria-pressed="false">Mind &amp; mood </button>
-        <button type="button" class="filter-chip" data-cat="digestion" aria-pressed="false">Digestion </button>
-        <button type="button" class="filter-chip" data-cat="joints" aria-pressed="false">Joints </button>
-        <button type="button" class="filter-chip" data-cat="bone" aria-pressed="false">Bones </button>
-        <button type="button" class="filter-chip" data-cat="eyes" aria-pressed="false">Eyes </button>
-        <button type="button" class="filter-chip" data-cat="throat" aria-pressed="false">Throat </button>
-        <button type="button" class="filter-chip" data-cat="skin" aria-pressed="false">Skin </button>
+        <button type="button" class="filter-chip" data-cat="bloodpressure" aria-pressed="false">High blood pressure </button>
+        <button type="button" class="filter-chip" data-cat="bloodsugar" aria-pressed="false">High blood sugar </button>
+        <button type="button" class="filter-chip" data-cat="insomnia" aria-pressed="false">Insomnia </button>
+        <button type="button" class="filter-chip" data-cat="lumbar" aria-pressed="false">Lumbar spine </button>
+        <button type="button" class="filter-chip" data-cat="nodules" aria-pressed="false">Nodules </button>
       </div>
 
       <!-- To add a testimonial: copy a whole <article class="tcard">, replace the
-           portrait, name, date, #tags and text, and list its category keys in data-cats. -->
+           portrait, name, date, tags and text, and list its category keys in data-cats.
+           Tags come in two rows: .key repeats the filter keywords this story matches
+           (same order as the filter bar); .detail lists the specific conditions and
+           takes no part in filtering. -->
       <div class="container testimonial-grid">
 
-        <article class="tcard" data-cats="spine heart throat joints digestion sleep skin eyes mood">
+        <article class="tcard" data-cats="cervical constipation heart insomnia lumbar">
           <header class="tcard-head">
             <img class="tcard-avatar" src="assets/testimony-julia-zheng.jpg" alt="Portrait of Julia Zheng" loading="lazy" />
             <div>
@@ -64,8 +68,11 @@
               <p class="tcard-meta">Sept 8, 2026</p>
             </div>
           </header>
-          <ul class="tcard-tags">
-            <li>#Lumbar disc degeneration</li><li>#Cervical spine</li><li>#Thoracic spine</li><li>#Atrial fibrillation</li><li>#Chronic pharyngitis</li><li>#Knee pain</li><li>#Constipation</li><li>#Insomnia</li><li>#Dry, rough skin</li>
+          <ul class="tcard-tags key" aria-label="Filter categories">
+            <li>#Cervical spine</li><li>#Constipation</li><li>#Heart</li><li>#Insomnia</li><li>#Lumbar spine</li>
+          </ul>
+          <ul class="tcard-tags detail" aria-label="Other improvements">
+            <li>#Lumbar disc degeneration</li><li>#Thoracic spine</li><li>#Atrial fibrillation</li><li>#Chronic pharyngitis</li><li>#Knee pain</li><li>#Dry, rough skin</li>
           </ul>
           <div class="tcard-body">
             <p>For seven full years my body was held hostage by severe degeneration of the lumbar discs. At my worst I could not sit, stand, walk or drive for more than fifteen minutes. Even before the pandemic I was confined at home, spending most of every day on a yoga mat or in bed. Over those seven years I tried seventeen different approaches — Eastern and Western, traditional and modern, the practical and the esoteric. Either they did nothing, or they helped a little and then stalled. Not until June 3, 2024, when I encountered the Sanjiao wellness tea ceremony (the "tea practice"), did I truly see daylight.</p>
@@ -90,7 +97,7 @@
           <button type="button" class="tcard-more">Read full story</button>
         </article>
 
-        <article class="tcard" data-cats="eyes digestion sleep heart joints mood">
+        <article class="tcard" data-cats="constipation heart insomnia">
           <header class="tcard-head">
             <img class="tcard-avatar" src="assets/testimony-xia-jing.jpg" alt="Portrait of Xia Jing" loading="lazy" />
             <div>
@@ -98,8 +105,11 @@
               <p class="tcard-meta">Sept 7, 2026</p>
             </div>
           </header>
-          <ul class="tcard-tags">
-            <li>#Tachycardia</li><li>#Dry eyes</li><li>#Cataract</li><li>#Light sensitivity</li><li>#Constipation</li><li>#Insomnia</li><li>#Knee pain</li>
+          <ul class="tcard-tags key" aria-label="Filter categories">
+            <li>#Constipation</li><li>#Heart</li><li>#Insomnia</li>
+          </ul>
+          <ul class="tcard-tags detail" aria-label="Other improvements">
+            <li>#Tachycardia</li><li>#Dry eyes</li><li>#Cataract</li><li>#Light sensitivity</li><li>#Knee pain</li>
           </ul>
           <div class="tcard-body">
             <p>Dear fellow practitioners — let me share what I have truly experienced in three years and ten months of practicing the Sanjiao wellness tea ceremony.</p>
@@ -119,7 +129,7 @@
           <button type="button" class="tcard-more">Read full story</button>
         </article>
 
-        <article class="tcard" data-cats="heart bone joints spine sleep mood">
+        <article class="tcard" data-cats="heart insomnia lumbar">
           <header class="tcard-head">
             <img class="tcard-avatar" src="assets/testimony-zhang-wei.jpg" alt="Portrait of Zhang Wei" loading="lazy" />
             <div>
@@ -127,8 +137,11 @@
               <!-- Date of the note: add <p class="tcard-meta">Jan 1, 2026</p> once known -->
             </div>
           </header>
-          <ul class="tcard-tags">
-            <li>#Coronary heart disease</li><li>#Angina</li><li>#Osteoporosis</li><li>#Hip surgery recovery</li><li>#Knee pain</li><li>#Back pain</li><li>#Insomnia</li>
+          <ul class="tcard-tags key" aria-label="Filter categories">
+            <li>#Heart</li><li>#Insomnia</li><li>#Lumbar spine</li>
+          </ul>
+          <ul class="tcard-tags detail" aria-label="Other improvements">
+            <li>#Coronary heart disease</li><li>#Angina</li><li>#Osteoporosis</li><li>#Hip surgery recovery</li><li>#Knee pain</li><li>#Back pain</li>
           </ul>
           <div class="tcard-body">
             <p>This October I will turn 92. About three years ago, in October 2023, I began drinking the Sanjiao wellness tea developed and led by Master Jianping Wang.</p>
@@ -146,7 +159,7 @@
           <button type="button" class="tcard-more">Read full story</button>
         </article>
 
-        <article class="tcard" data-cats="mood sleep">
+        <article class="tcard" data-cats="insomnia">
           <header class="tcard-head">
             <img class="tcard-avatar" src="assets/testimony-mary-yin.jpg" alt="Portrait of Mingzhu Yin (Mary Yin)" loading="lazy" />
             <div>
@@ -154,8 +167,11 @@
               <!-- Date of the note: add <p class="tcard-meta">Jan 1, 2026</p> once known -->
             </div>
           </header>
-          <ul class="tcard-tags">
-            <li>#Depression</li><li>#Insomnia</li><li>#Medication side effects</li>
+          <ul class="tcard-tags key" aria-label="Filter categories">
+            <li>#Insomnia</li>
+          </ul>
+          <ul class="tcard-tags detail" aria-label="Other improvements">
+            <li>#Depression</li><li>#Medication side effects</li>
           </ul>
           <div class="tcard-body">
             <p>My connection with the Sanjiao tea ceremony practice began on December 8, 2023, in the Wuyi Mountains. At that time I was struggling with moderate depression and depended on medication to get through the day, and the side effects were deeply affecting my life and my work. I soon realized that something had to change, so I decided to try stopping the medication and instead joined the Sanjiao practice every morning at six o'clock.</p>

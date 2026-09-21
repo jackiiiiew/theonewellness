@@ -62,7 +62,7 @@
     count.className = 'count';
     count.textContent = n;
     chip.appendChild(count);
-    if (n === 0 && cat !== 'all') chip.hidden = true;   // 暂时没有见证的分类不显示
+    // 九个分类固定显示；暂时没有见证的分类计数为 0，点击后会提示该分类还没有见证。
   });
 
   function apply(cat) {
