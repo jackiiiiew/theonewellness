@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /_backup_original/
+Disallow: /Claude%20outputs/
+
+Sitemap: https://theonewellness.org/sitemap.xml
